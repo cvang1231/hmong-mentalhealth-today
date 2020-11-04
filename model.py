@@ -21,11 +21,33 @@ class User(db.Model):
     zipcode = db.Column(db.Integer)
 
     def __repr__(self):
-        
+
         return f'<User user_id={self.user_id} 
                 user_name={self.user_name} 
-                email={self.name}'
+                email={self.name}>'
 
+
+class Therapist(db.Model):
+    """A therapist."""
+
+    __tablename__ = 'therapists'
+
+    therapist_id = db.Column(db.Integer,
+                        db.autoincrement=True,
+                        db.primary_key=True)
+    name = db.Column(db.String(50))
+    email = db.Column(db.String(50))
+    website = db.Column(db.String(200))
+    lat_loc = db.Column(db.Integer)
+    lon_loc = db.Column(db.Integer)
+    speciality = db.Column(db.Text)
+    img = db.Column(db.String)
+
+    def __repr__(self):
+
+        return f'<Therapist therapist_id={self.therapist_id} 
+                name={self.name} 
+                email={self.email}>'
 
 def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
