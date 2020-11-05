@@ -37,7 +37,7 @@ def get_user_by_email(email):
 # functions for therapist
 
 
-def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img)
+def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img):
     """Create and return a new therapist."""
 
     therapist = Therapist(name=name 
