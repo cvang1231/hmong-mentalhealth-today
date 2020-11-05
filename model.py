@@ -1,72 +1,10 @@
 """Models for Hmong for Mental Health Webapp"""
 
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
-
-
-class User(db.Model):
-    """A user."""
-
-    __tablename__ = 'users'
-
-    user_id = db.Column(db.Integer,
-                        db.autoincrement=True,
-                        db.primary_key=True)
-    user_name = db.Column(db.String(50), unique=True)
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(20))
-    zipcode = db.Column(db.Integer)
-
-    def __repr__(self):
-
-        return f'<User user_id={self.user_id} 
-                user_name={self.user_name} 
-                email={self.name}>'
-
-
-class Therapist(db.Model):
-    """A therapist."""
-
-    __tablename__ = 'therapists'
-
-    therapist_id = db.Column(db.Integer,
-                        db.autoincrement=True,
-                        db.primary_key=True)
-    name = db.Column(db.String(50))
-    email = db.Column(db.String(50))
-    website = db.Column(db.String(200))
-    lat_loc = db.Column(db.Integer)
-    lon_loc = db.Column(db.Integer)
-    speciality = db.Column(db.Text)
-    img = db.Column(db.String)
-
-    def __repr__(self):
-
-        return f'<Therapist therapist_id={self.therapist_id} 
-                name={self.name} 
-                email={self.email}>'
-
-
-class Favorite(db.Model):
-    """A favorite."""
-
-    __tablename__ = 'favorites'
-
-    fav_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    therapist_id = db.Column(db.Integer, db.ForeignKey('therapists.therapist_id'))
-
-    def __repr__(self):
-        return f'<Favorite fav_id={self.fav_id} 
-                therapist_id={self.therapist_id}>
-                user_id={self.user_id}'
-
-
-def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=False):
+def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -78,7 +16,63 @@ def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=F
 
 
 
+class User(db.Model):
+    """A user."""
+
+    __tablename__ = 'users'
+
+    # primary key for users table
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    password = db.Column(db.String(20), nullable=False)
+    zipcode = db.Column(db.Integer)
+    fav_id = db.Column(db.Integer, db.ForeignKey('favorites.fav_id'))
+
+    # favorites = a list of Favorite objects
+
+    def __repr__(self):
+
+        return f'<User user_id={self.user_id} email={self.email}>'
+
+
+class Therapist(db.Model):
+    """A therapist."""
+
+    __tablename__ = 'therapists'
+
+    # primary key for therapists table
+    therapist_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
+    website = db.Column(db.String(100))
+    lat_loc = db.Column(db.Integer)
+    lon_loc = db.Column(db.Integer)
+    specialty = db.Column(db.Text)
+    img = db.Column(db.String)
+
+    def __repr__(self):
+
+        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email}>'
+
+
+class Favorite(db.Model):
+    """A favorite."""
+
+    __tablename__ = 'favorites'
+
+    # primary key for favorites table
+    fav_id = db.Column(db.Integer, primary_key=True)
+    # foreign key from users table
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    # foreign key from therapists table
+    therapist_id = db.Column(db.Integer, db.ForeignKey('therapists.therapist_id'))
+
+    def __repr__(self):
+        return f'<Favorite fav_id={self.fav_id} therapist_id={self.therapist_id} user_id={self.user_id}>'
+
+
 
 if __name__ == '__main__':
     from server import app
+
     connect_to_db(app)
