@@ -40,13 +40,13 @@ def get_user_by_email(email):
 def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img):
     """Create and return a new therapist."""
 
-    therapist = Therapist(name=name 
-                        email=email
-                        website=website
-                        lat_loc=lat_loc
-                        long_loc=long_loc
-                        specialty=specialty
-                        img=img)
+    therapist = Therapist(name=name, 
+                        email=email,
+                        website=website,
+                        lat_loc=lat_loc,
+                        long_loc=long_loc,
+                        specialty=specialty,
+                        img=img
                         )
 
     db.session.add(therapist)
@@ -76,10 +76,10 @@ def get_therapist_by_email(email):
 # function for favorite
 
 
-def create_fav(user_id, therapist_id):
+def create_fav(user_id, therapistId):
     """Create and return a new favorite."""
 
-    favorite = Favorite(user_id=user_id, therapist_id=therapist_id)
+    favorite = Favorite(user_id=user_id, therapist_id=therapistId)
 
     db.session.add(favorite)
     db.session.commit()
@@ -87,11 +87,11 @@ def create_fav(user_id, therapist_id):
     return favorite
 
 
-def get_fav_therapists(user_id):
+def get_fav_therapists(userId):
     """Return a user's favorite therapists."""
 
     list_of_therapists = []
-    user_favs = Favorite.query.filter(Favorite.user_id = user_id).all()
+    user_favs = Favorite.query.filter(Favorite.user_id == userId).all()
 
     for fav in user_favs:
 
