@@ -7,6 +7,7 @@ db = SQLAlchemy()
 
 
 
+
 class User(db.Model):
     """A user."""
 
@@ -49,6 +50,22 @@ class Therapist(db.Model):
                 name={self.name} 
                 email={self.email}>'
 
+
+class Favorite(db.Model):
+    """A favorite."""
+
+    __tablename__ = 'favorites'
+
+    fav_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    therapist_id = db.Column(db.Integer, db.ForeignKey('therapists.therapist_id'))
+
+    def __repr__(self):
+        return f'<Favorite fav_id={self.fav_id} 
+                therapist_id={self.therapist_id}>
+                user_id={self.user_id}'
+
+
 def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
@@ -58,6 +75,8 @@ def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=F
     db.init_app(flask_app)
 
     print('Connected to the db!')
+
+
 
 
 if __name__ == '__main__':
