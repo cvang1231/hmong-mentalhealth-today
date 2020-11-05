@@ -3,7 +3,7 @@
 from model import db, User, Therapist, Favorite, connect_to_db
 
 
-# user functions
+# functions for user
 
 
 def create_user(email, password, zipcode):
@@ -34,7 +34,7 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-# therapist functions
+# functions for therapist
 
 
 def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img)
@@ -73,7 +73,7 @@ def get_therapist_by_email(email):
     return Therapist.query.filter(Therapist.email == email).first()
 
 
-# favorite functions
+# function for favorite
 
 
 def create_fav(user_id, therapist_id):
@@ -100,7 +100,7 @@ def get_fav_therapists(user_id):
         list_of_therapists.append(therapist)
 
     return list_of_therapists
-    
+
 
 if __name__ == '__main__':
     from server import app

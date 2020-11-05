@@ -28,8 +28,6 @@ class User(db.Model):
     zipcode = db.Column(db.Integer)
     fav_id = db.Column(db.Integer, db.ForeignKey('favorites.fav_id'))
 
-    # favorites = a list of Favorite objects
-
     def __repr__(self):
 
         return f'<User user_id={self.user_id} email={self.email} zipcode={self.zipcode}>'
