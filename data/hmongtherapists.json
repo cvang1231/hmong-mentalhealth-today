@@ -6,7 +6,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9938234,
-        "long": -93.3361445
+        "long": -93.3361445,
+        "img" : ""
     },
     {
         "name": "Alison Yang",
@@ -15,7 +16,8 @@
         "email": "alison.yang@sankalpatwc.com",
         "specialty": "Therapy for individuals, couples, families, teens, and children. Offer play therapy.",
         "lat": 44.826895,
-        "long": -93.2833886
+        "long": -93.2833886,
+        "img" : ""
     },
     {
         "name": "Amanda Moua",
@@ -24,7 +26,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9938234,
-        "long": -93.3361445
+        "long": -93.3361445,
+        "img" : ""
     },
     {
         "name": "Bea Vue-Benson",
@@ -33,7 +36,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9463603,
-        "long": -93.1737669
+        "long": -93.1737669,
+        "img" : ""
     },
     {
         "name": "Chai Lo",
@@ -42,7 +46,8 @@
         "email": "Chai.lo@hcmed.org",
         "specialty": "Inpatient adult psychiatric care.",
         "lat": 44.9717774,
-        "long": -93.2644276
+        "long": -93.2644276,
+        "img" : ""
     },
     {
         "name": "Cheng Vang",
@@ -51,7 +56,8 @@
         "email": "cheng.vang@wilder.org",
         "specialty": "Hmong, Southeast population, school-based",
         "lat": 44.9548604,
-        "long": -93.1502777
+        "long": -93.1502777,
+        "img" : ""
     },
     {
         "name": "Elizabeth Lee",
@@ -60,7 +66,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.965529,
-        "long": -93.2062672
+        "long": -93.2062672,
+        "img" : ""
     },
     {
         "name": "Francois Vang",
@@ -69,7 +76,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9231627,
-        "long": -92.9750344
+        "long": -92.9750344,
+        "img" : ""
     },
     {
         "name": "Gao Chee Vang",
@@ -78,7 +86,8 @@
         "email": "gao@being-therapy.com",
         "specialty": "Accelerated Resolution Therapy (ART), trauma-focused techniques, mindfulness practices, and Cognitive Behavioral Therapy (CBT) / co-occurring disorders, SPMI, cultural identity, anxiety, phobia, depression, PTSD",
         "lat": 44.9415658,
-        "long": -93.1154589
+        "long": -93.1154589,
+        "img" : ""
     },
     {
         "name": "Hua Xiong-Her",
@@ -87,7 +96,8 @@
         "email": "hua.xiong-her@wilder.org",
         "specialty": "EMDR, TF-CBT, MAP, MI, IFS / Southeast Asian, children over 5, adults, couples, families",
         "lat": 44.9548604,
-        "long": -93.1502777
+        "long": -93.1502777,
+        "img" : ""
     },
     {
         "name": "Ka Lo",
@@ -96,7 +106,8 @@
         "email": "ka.lo@wilder.org",
         "specialty": "I treat individuals with a variety of mental health issues relating to anxiety, depression, and trauma. I also work with families doing intensive functional family therapy work. I use various intervention modalities in my practice including cognitive behavior therapy, motivational interviewing, EMDR, NET, FFT, meditation, relaxation exercises and mindfulness.",
         "lat": 44.9548604,
-        "long": -93.1502777
+        "long": -93.1502777,
+        "img" : ""
     },
     {
         "name": "Kazoua Vang",
@@ -105,7 +116,8 @@
         "email": "kvang@aracounselingmn.org",
         "specialty": "EMDR, Pre-Marital Counseling, Refugees/Immigrants",
         "lat": 44.9677766,
-        "long": -93.2172934
+        "long": -93.2172934,
+        "img" : ""
     },
     {
         "name": "Kongmeng Kue",
@@ -114,7 +126,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9231627,
-        "long": -92.9750344
+        "long": -92.9750344,
+        "img" : ""
     },
     {
         "name": "Larry Yang",
@@ -123,7 +136,8 @@
         "email": "",
         "specialty": "Southeast Asian, children, adults, families",
         "lat": 44.9547471,
-        "long": -93.1510593
+        "long": -93.1510593,
+        "img" : ""
     },
     {
         "name": "Lisa Xiong",
@@ -132,7 +146,8 @@
         "email": "Lxiong@gapschool.org",
         "specialty": "Individual, family therapy, play therapy, TF-CBT",
         "lat": 44.9282568,
-        "long": -93.0697214
+        "long": -93.0697214,
+        "img" : ""
     },
     {
         "name": "Mae Moua",
@@ -141,7 +156,8 @@
         "email": "maethrilts@gmail.com",
         "specialty": "Provides individual & relationship therapeutic services, poly/kink friendly, LGBTQIA+ welcoming",
         "lat": 44.9537377,
-        "long": -93.1287398
+        "long": -93.1287398,
+        "img" : ""
     },
     {
         "name": "Mai Bao Xiong",
@@ -150,7 +166,8 @@
         "email": "maibao.xiong@embietherapy.com",
         "specialty": "Individual, family and couples therapy. TF-CBT, EMDR.",
         "lat": 44.9123245,
-        "long": -93.3301861
+        "long": -93.3301861,
+        "img" : ""
     },
     {
         "name": "Maria Moua",
@@ -159,7 +176,8 @@
         "email": "",
         "specialty": "",
         "lat": 45.0364713,
-        "long": -93.0153825
+        "long": -93.0153825,
+        "img" : ""
     },
     {
         "name": "May Moua",
@@ -168,7 +186,8 @@
         "email": "",
         "specialty": "",
         "lat": 44.9123245,
-        "long": -93.3301861
+        "long": -93.3301861,
+        "img" : ""
     },
     {
         "name": "Maylee Chang",
@@ -177,7 +196,8 @@
         "email": "maylee@familyrevelations.net",
         "specialty": "CBT, TF-CBT, Somatic Therapy, Relaxation training, ADHD, Autism, School-based.",
         "lat": 45.0101169,
-        "long": 45.0364713
+        "long": 45.0364713,
+        "img" : ""
     },
     {
         "name": "Nou Vang",
@@ -186,7 +206,8 @@
         "email": "nou.vang@wilder.org",
         "specialty": "IFS, Solution Oriented, Narrative Therapy model",
         "lat": 44.9548604,
-        "long": -93.1502777
+        "long": -93.1502777,
+        "img" : ""
     },
     {
         "name": "Pakou Yang",
@@ -195,7 +216,8 @@
         "email": "pakou.yang@canopymhc.com",
         "specialty": "Experiential, IFS, Solution-Focused, Bowenian Family Therapy, Somatic, Trauma, Depression, Anxiety, Adjustment, Relationship Conflict (Partnered and Family), Domestic Violence",
         "lat": 44.8826797,
-        "long": -93.2885073
+        "long": -93.2885073,
+        "img" : ""
     },
     {
         "name": "Sandy Yang-James",
@@ -204,7 +226,8 @@
         "email": "sandy@theluminousmind.com",
         "specialty": "Trauma, EMDR, Marriage & Family, Co-occuring Disorders",
         "lat": 45.007423,
-        "long": -93.168322
+        "long": -93.168322,
+        "img" : ""
     },
     {
         "name": "Talee Vang",
@@ -213,7 +236,8 @@
         "email": "Talee.vang@gmail.com",
         "specialty": "CBT, ACT, trauma, feminist, multicultural",
         "lat": 44.9711612,
-        "long": -93.2654152
+        "long": -93.2654152,
+        "img" : ""
     },
     {
         "name": "True Thao",
@@ -222,7 +246,8 @@
         "email": "true@truethaocounseling.com",
         "specialty": "Anxiety, depression and trauma; EMDR, TF-CBT, NET, MAP, MI",
         "lat": 44.9609213,
-        "long": -93.0695059
+        "long": -93.0695059,
+        "img" : ""
     },
     {
         "name": "Xay Yang",
@@ -231,6 +256,7 @@
         "email": "xyangtransforming@gmail.com",
         "specialty": "Individual and families impacted by domestic violence, trauma, LGBTQ+, Narrative Exposure Therapy Trained, Child-parent Psychotherapy Certified, trained in AIR Network",
         "lat": 44.9089785,
-        "long": -93.1880093
+        "long": -93.1880093,
+        "img" : ""
     }
 ]
