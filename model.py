@@ -1,10 +1,10 @@
-"""Models for Hmong for Mental Health Webapp"""
+"""Models for Hmong Mental Health Today Webapp"""
 
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-def connect_to_db(flask_app, db_uri='postgresql:///hmongformentalhealth', echo=True):
+def connect_to_db(flask_app, db_uri='postgresql:///hmongmentalhealthtoday', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -42,7 +42,7 @@ class Therapist(db.Model):
     therapist_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
-    clinic_name = db.Column(db.String(50, nullable=False))
+    clinic = db.Column(db.String(50), nullable=False)
     website = db.Column(db.String(100))
     lat_loc = db.Column(db.Float)
     lon_loc = db.Column(db.Float)
@@ -51,7 +51,7 @@ class Therapist(db.Model):
 
     def __repr__(self):
 
-        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email} clinic_name={self.clinic_name}>'
+        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email} clinic={self.clinic}>'
 
 
 class Favorite(db.Model):
