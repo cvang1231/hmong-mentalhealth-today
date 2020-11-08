@@ -42,6 +42,7 @@ class Therapist(db.Model):
     therapist_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
+    clinic_name = db.Column(db.String(50, nullable=False))
     website = db.Column(db.String(100))
     lat_loc = db.Column(db.Float)
     lon_loc = db.Column(db.Float)
@@ -50,7 +51,7 @@ class Therapist(db.Model):
 
     def __repr__(self):
 
-        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email}>'
+        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email} clinic_name={self.clinic_name}>'
 
 
 class Favorite(db.Model):

@@ -42,6 +42,7 @@ def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img):
 
     therapist = Therapist(name=name, 
                         email=email,
+                        clinic_name=clinic_name
                         website=website,
                         lat_loc=lat_loc,
                         long_loc=long_loc,
