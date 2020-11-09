@@ -44,8 +44,8 @@ class Therapist(db.Model):
     email = db.Column(db.String(50), nullable=False)
     clinic = db.Column(db.String(50), nullable=False)
     website = db.Column(db.String(100))
-    lat_loc = db.Column(db.Float)
-    lon_loc = db.Column(db.Float)
+    lat = db.Column(db.Float)
+    long = db.Column(db.Float)
     specialty = db.Column(db.Text)
     img = db.Column(db.String)
 

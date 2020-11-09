@@ -37,15 +37,15 @@ def get_user_by_email(email):
 # Functions for therapist!
 
 
-def add_therapist(name, email, website, lat_loc, lon_loc, specialty, img):
+def add_therapist(name, email, website, lat, long, specialty, img):
     """Create and return a new therapist."""
 
     therapist = Therapist(name=name, 
                         email=email,
                         clinic=clinic,
                         website=website,
-                        lat_loc=lat_loc,
-                        long_loc=long_loc,
+                        lat=lat,
+                        long=long,
                         specialty=specialty,
                         img=img
                         )
@@ -74,7 +74,7 @@ def get_therapist_by_email(email):
     return Therapist.query.filter(Therapist.email == email).first()
 
 
-# Function for favorite!
+# Function for favorite
 
 
 def create_fav(user_id, therapistId):
