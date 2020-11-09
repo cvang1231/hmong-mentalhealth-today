@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Hmong Mental Health Today Homepage{% endblock title %}
+
+{% block body %}
+    <h1>Hmong Mental Health Today</h1>
+    <p>Many of us have been deeply wounded by our history and the generations before us,
+        so it is now more important than ever for healing and for reflection.
+        Let's continue to push towards healthy changes today.
+    </p>
+
+    <ul>
+        <li><a href='/therapists'>View therapists</a></li>
+    </ul>
+
+
+    <h2>Make an Account</h2>
+    <form action='/users' method=POST>
+        <div>
+            <p>
+            <label>Email</label> <input type='text' name='email'>
+            </p>
+            <p>
+                <label>Password</label> <input type='password' name='password'>
+            </p>
+            <p>
+            <input type='submit'>
+            </p>
+        </div>
+    </form>
+
+    <h2>Log In</h2>
+    <form action='/login' method='POST'>
+        <div>
+            <p>
+            <label>Email</label> <input type='text' name='email'> 
+            </p>
+            <p>
+                <label>Password</label> <input type='password' name='password'>
+            </p>
+            <p>
+            <input type='submit'>
+            </p>
+        </div>
+    </form>
+
+{% endblock %}
