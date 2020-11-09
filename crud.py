@@ -23,9 +23,9 @@ def get_users():
 
 
 def get_user_by_id(user_id):
-    """Return a user by their user_id."""
+    """Return a user by primary key."""
 
-    return User.query.filter(User.user_id == user_id).first()
+    return User.query.get(user_id)
 
 
 def get_user_by_email(email):
@@ -37,7 +37,7 @@ def get_user_by_email(email):
 # Functions for therapist!
 
 
-def add_therapist(name, email, website, lat, long, specialty, img):
+def add_therapist(name, email, clinic, website, lat, long, specialty, img):
     """Create and return a new therapist."""
 
     therapist = Therapist(name=name, 
@@ -63,9 +63,9 @@ def get_therapists():
 
 
 def get_therapist_by_id(therapist_id):
-    """Return a therapist by their therapist_id."""
+    """Return a therapist by primary key."""
 
-    return Therapist.query.filter(Therapist.therapist_id == therapist.id).first()
+    return Therapist.query.get(therapist.id)
 
 
 def get_therapist_by_email(email):
