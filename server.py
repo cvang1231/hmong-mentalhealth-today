@@ -14,15 +14,23 @@ app.jinja_env.undefined = StrictUndefined
 def get_homepage():
     """View homepage."""
 
-    return render_template('homepage.html)
+    return render_template('homepage.html')
 
 @app.route('/therapists')
-def view_thearpists():
-    """View all therapists.""""
+def view_therapists():
+    """View all therapists."""
 
     therapists = crud.get_therapists()
 
-return render_template('therapists.html', therapists=therapists)
+    return render_template('therapists.html', therapists=therapists)
+
+@app.route('/therapists/<therapist_id>')
+def view_one_therapist(therapist_id):
+    """View details on a therapist."""
+
+    therapists = crud.get_therapist_by_id()
+
+    return render_template('therapist_details.html', therapist=therapist)
 
 if __name__ == '__main__':
     connect_to_db(app)
