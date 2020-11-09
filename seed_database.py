@@ -21,7 +21,7 @@ with open('data/hmongtherapists.json') as f:
 # Create therapists, store them in list
 therapist_in_db = []
 
-# Loop through each therapist in therapist_data
+# Loop through each dictionary in therapist_data
 for therapist in therapist_data:
 
     name, clinic, website, email, specialty, lat, long, img = (
@@ -34,6 +34,17 @@ for therapist in therapist_data:
       therapist['long'],
       therapist['img']  
     )
+    # Supply arguments to crud.py
+    db_therapist = crud.add_therapist(name, 
+                                    email,
+                                    clinic, 
+                                    website, 
+                                    lat, 
+                                    long, 
+                                    specialty, 
+                                    img)
+    # Add each new therapist to db_therapist list
+    therapist_in_db.append(db_therapist)
 
 
 
