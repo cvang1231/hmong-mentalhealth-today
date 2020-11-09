@@ -43,7 +43,7 @@ class Therapist(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False)
     clinic = db.Column(db.String(50), nullable=False)
-    website = db.Column(db.String(100))
+    website = db.Column(db.String)
     lat = db.Column(db.Float)
     long = db.Column(db.Float)
     specialty = db.Column(db.Text)
@@ -51,7 +51,7 @@ class Therapist(db.Model):
 
     def __repr__(self):
 
-        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email} clinic={self.clinic}>'
+        return f'<Therapist therapist_id={self.therapist_id} name={self.name} email={self.email}>'
 
 
 class Favorite(db.Model):
