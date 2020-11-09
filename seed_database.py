@@ -24,14 +24,14 @@ therapist_in_db = []
 # Loop through each dictionary in therapist_data
 for therapist in therapist_data:
 
-    name, clinic, website, email, specialty, lat, long, img = (
+    name, email, clinic, website, lat, long, specialty, img = (
       therapist['name'],
+      therapist['email'],
       therapist['clinic'],
       therapist['website'],
-      therapist['email'],
-      therapist['specialty'],
       therapist['lat'],
       therapist['long'],
+      therapist['specialty'],
       therapist['img']  
     )
     # Supply arguments to crud.py
