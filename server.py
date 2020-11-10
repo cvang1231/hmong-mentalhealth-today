@@ -3,6 +3,8 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
 from model import connect_to_db
 import crud
+import os
+
 from jinja2 import StrictUndefined
 
 
@@ -25,10 +27,10 @@ def view_therapists():
     return render_template('therapists.html', therapists=therapists)
 
 @app.route('/therapists/<therapist_id>')
-def view_one_therapist(therapist_id):
+def therapist_details(therapist_id):
     """View details on a therapist."""
 
-    therapists = crud.get_therapist_by_id()
+    therapist = crud.get_therapist_by_id(therapist_id)
 
     return render_template('therapist_details.html', therapist=therapist)
 
