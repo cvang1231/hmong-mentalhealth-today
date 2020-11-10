@@ -18,7 +18,7 @@ def get_homepage():
 
     return render_template('homepage.html')
 
-
+# THERAPIST DETAILS ROUTES
 @app.route('/therapists')
 def view_therapists():
     """View all therapists."""
@@ -37,6 +37,11 @@ def therapist_details(therapist_id):
     return render_template('therapist_details.html', therapist=therapist)
 
 
+# FAVORITE ROUTES
+
+
+
+# REGISTER AND LOGIN ROUTES
 @app.route('/create_user', methods = ['POST'])
 def register_user():
     """Creates a new user with given inputs."""
@@ -61,12 +66,14 @@ def register_user():
 
 @app.route('/login')
 def log_in():
+    """View login page."""
 
     return render_template('login.html')
 
 
-@app.route('/handle_login')
+@app.route('/handle_login', methods = ['POST'])
 def handle_login():
+    """Checks to see if password and email match with given inputs."""
 
     email = request.form.get('email')
     password = request.form.get('password')
