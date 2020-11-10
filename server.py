@@ -18,6 +18,7 @@ def get_homepage():
 
     return render_template('homepage.html')
 
+
 @app.route('/therapists')
 def view_therapists():
     """View all therapists."""
@@ -26,6 +27,7 @@ def view_therapists():
 
     return render_template('therapists.html', therapists=therapists)
 
+
 @app.route('/therapists/<therapist_id>')
 def therapist_details(therapist_id):
     """View details on a therapist."""
@@ -33,6 +35,29 @@ def therapist_details(therapist_id):
     therapist = crud.get_therapist_by_id(therapist_id)
 
     return render_template('therapist_details.html', therapist=therapist)
+
+
+@app.route('/create_user', methods = ['POST'])
+def register_user():
+    """Creates a new user with given inputs."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+    zipcode = request.form.get('zipcode')
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash('Cannot create an account with existing email! Please try again.')
+
+        return redirect('/')
+
+    else:
+        crud.create_user(email, password, zipcode)
+        flask('Account created! Please log in')
+
+        return redirect('/login')
+
 
 if __name__ == '__main__':
     connect_to_db(app)
