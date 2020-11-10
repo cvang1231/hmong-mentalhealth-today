@@ -56,7 +56,35 @@ def register_user():
         crud.create_user(email, password, zipcode)
         flask('Account created! Please log in')
 
+    return redirect('/login')
+
+
+@app.route('/login')
+def log_in():
+
+    return render_template('login.html')
+
+
+@app.route('/handle_login')
+def handle_login():
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+
+    if user and user.password == password:
+        session['current user'] = user.user_id
+        flash(f'Successfully logged in {email}')
+
+        return redirect('/')
+
+    else: 
+        flash('Incorrect password and/or email. Please try again.')
         return redirect('/login')
+        
+
+
 
 
 if __name__ == '__main__':
