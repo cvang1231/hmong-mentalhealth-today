@@ -3,7 +3,7 @@
 from model import db, User, Therapist, Favorite, connect_to_db
 
 
-# Functions for user!
+######################## Functions for user! ########################
 
 
 def create_user(email, password, zipcode):
@@ -16,10 +16,10 @@ def create_user(email, password, zipcode):
 
     return user
 
-def get_users():
-    """Return all users in database."""
+#def get_users():
+    #"""Return all users in database."""
 
-    return User.query.all()
+    #return User.query.all()
 
 
 def get_user_by_id(user_id):
@@ -34,26 +34,26 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-# Functions for therapist!
+######################## Functions for therapist! ########################
 
 
-def add_therapist(name, email, clinic, website, lat, long, specialty, img):
-    """Create and return a new therapist."""
+#def add_therapist(name, email, clinic, website, lat, long, specialty, img):
+    #"""Create and return a new therapist."""
 
-    therapist = Therapist(name=name, 
-                        email=email,
-                        clinic=clinic,
-                        website=website,
-                        lat=lat,
-                        long=long,
-                        specialty=specialty,
-                        img=img
-                        )
+    #therapist = Therapist(name=name, 
+                        #email=email,
+                        #clinic=clinic,
+                        #website=website,
+                        #lat=lat,
+                        #long=long,
+                        #specialty=specialty,
+                        #img=img
+                        #)
 
-    db.session.add(therapist)
-    db.session.commit()
+    #db.session.add(therapist)
+    #db.session.commit()
 
-    return therapist
+    #return therapist
 
 
 def get_therapists():
@@ -65,7 +65,7 @@ def get_therapists():
 def get_therapist_by_id(therapist_id):
     """Return a therapist by primary key."""
 
-    return Therapist.query.get(therapist.id)
+    return Therapist.query.get(therapist_id)
 
 
 def get_therapist_by_email(email):
@@ -74,13 +74,13 @@ def get_therapist_by_email(email):
     return Therapist.query.filter(Therapist.email == email).first()
 
 
-# Function for favorite
+######################## Function for favorite ########################
 
 
-def create_fav(user_id, therapistId):
+def create_fav(user_id, therapist_id):
     """Create and return a new favorite."""
 
-    favorite = Favorite(user_id=user_id, therapist_id=therapistId)
+    favorite = Favorite(user_id=user_id, therapist_id=therapist_id)
 
     db.session.add(favorite)
     db.session.commit()

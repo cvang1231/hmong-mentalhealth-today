@@ -19,5 +19,9 @@
 <p>
     {{ therapist.specialty }}
 </p>
-
+    {% if 'user' in session%}
+    <form action='/therapists/{{therapist.therapist_id}}/fav_therapist' id='add-fav-therapist'>
+    <button type='submit'>Click to favorite a therapist</button>
+    </form>
+    {% endif %}
 {% endblock %}
