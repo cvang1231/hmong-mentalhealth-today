@@ -42,15 +42,15 @@ def therapist_details(therapist_id):
 
 
 ######################## FAVORITE ROUTES ########################
-@app.route('/therapists/<therapist_id>/fav_therapist')
+@app.route('/therapists/<therapist_id>/add_fav_therapist', methods = ['POST'])
 def add_therapist(therapist_id):
     """Add therapist to favorites."""
 
-    therapistId = crud.get_therapist_by_id(therapist_id)
+    therapist = crud.get_therapist_by_id(therapist_id)
     session['therapist'] = therapist
 
-    if session['user']:
-        db_favorite = crud.create_fav(therapist)
+    if session['user_id']:
+        crud.create_fav(crud.get_user_by_id(session['user_id']), therapist)
         flash('Therapist favorited.')
     flash('Log in to see your favorite therapist(s).')
 
@@ -69,7 +69,7 @@ def add_therapist(therapist_id):
 
 @app.route('/create_user', methods = ['POST'])
 def register_user():
-    """Creates a new user with given inputs."""
+    """Creates a new user with given inputs. Stores user inputs in db."""
 
     email = request.form.get('email')
     password = request.form.get('password')
@@ -106,7 +106,7 @@ def handle_login():
     user = crud.get_user_by_email(email)
 
     if user and user.password == password:
-        session['user'] = user.user_id
+        session['user_id'] = user.user_id
         flash(f'Successfully logged in {email}')
 
         return redirect('/')
