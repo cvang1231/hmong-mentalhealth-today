@@ -88,6 +88,12 @@ def create_fav(user_id, therapist_id):
     return favorite
 
 
+def get_fav_by_id(fav_id):
+    """Get pairing between user and their fav therapist by fav_id."""
+
+    return Favorite.query.get(fav_id)
+
+
 def get_fav_therapists(userId):
     """Return a user's favorite therapists."""
 
