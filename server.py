@@ -9,8 +9,11 @@ from jinja2 import StrictUndefined
 
 
 app = Flask(__name__)
-app.secret_key = "dev"
+app.secret_key = os.environ.get('SECRET_KEY')
 app.jinja_env.undefined = StrictUndefined
+
+
+
 
 @app.route('/')
 def get_homepage():
@@ -18,7 +21,8 @@ def get_homepage():
 
     return render_template('homepage.html')
 
-# THERAPIST DETAILS ROUTES
+
+######################## THERAPIST(S) ROUTES ########################
 @app.route('/therapists')
 def view_therapists():
     """View all therapists."""
@@ -37,11 +41,32 @@ def therapist_details(therapist_id):
     return render_template('therapist_details.html', therapist=therapist)
 
 
-# FAVORITE ROUTES
+######################## FAVORITE ROUTES ########################
+@app.route('/therapists/<therapist_id>/fav_therapist')
+def add_therapist(therapist_id):
+    """Add therapist to favorites."""
+
+    therapistId = crud.get_therapist_by_id(therapist_id)
+    session['therapist'] = therapist
+
+    if session['user']:
+        db_favorite = crud.create_fav(therapist)
+        flash('Therapist favorited.')
+    flash('Log in to see your favorite therapist(s).')
+
+    return redirect('/')
 
 
+######################## USER REGISTRATION AND LOGIN ROUTES ########################
+#@app.route('/users')
+#def all_users():
+    #"""View all users."""
 
-# REGISTER AND LOGIN ROUTES
+    #users = crud.get_users()
+
+    #return render_template('all_users.html', users=users)
+
+
 @app.route('/create_user', methods = ['POST'])
 def register_user():
     """Creates a new user with given inputs."""
@@ -52,16 +77,16 @@ def register_user():
 
     user = crud.get_user_by_email(email)
 
-    if user:
+    if user == None:
+        crud.create_user(email, password, zipcode)
+        flash('Account created! You can now login.')
+
+        return redirect('/login')
+
+    else:
         flash('Cannot create an account with existing email! Please try again.')
 
         return redirect('/')
-
-    else:
-        crud.create_user(email, password, zipcode)
-        flask('Account created! Please log in')
-
-    return redirect('/login')
 
 
 @app.route('/login')
@@ -81,15 +106,15 @@ def handle_login():
     user = crud.get_user_by_email(email)
 
     if user and user.password == password:
-        session['current user'] = user.user_id
+        session['user'] = user.user_id
         flash(f'Successfully logged in {email}')
 
         return redirect('/')
 
     else: 
         flash('Incorrect password and/or email. Please try again.')
+
         return redirect('/login')
-        
 
 
 
