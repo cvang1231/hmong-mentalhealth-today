@@ -22,7 +22,7 @@ class User(db.Model):
     __tablename__ = 'users'
 
     # primary key for users table
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False)
     zipcode = db.Column(db.Integer)
@@ -40,12 +40,10 @@ class Therapist(db.Model):
 
     # primary key for therapists table
     therapist_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(50), nullable=False)
-    clinic = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(50), nullable=False, unique=True)
+    clinic = db.Column(db.String, nullable=False)
     website = db.Column(db.String)
-    lat = db.Column(db.Float)
-    long = db.Column(db.Float)
+    email = db.Column(db.String(50))
     specialty = db.Column(db.Text)
     img = db.Column(db.String)
 
@@ -65,6 +63,8 @@ class Favorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     # foreign key from therapists table
     therapist_id = db.Column(db.Integer, db.ForeignKey('therapists.therapist_id'))
+
+    #user = db.relationship('User', backref='favorites')
 
     def __repr__(self):
         return f'<Favorite fav_id={self.fav_id} therapist_id={self.therapist_id} user_id={self.user_id}>'

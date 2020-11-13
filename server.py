@@ -2,6 +2,7 @@
 
 from flask import (Flask, render_template, request, flash, session, redirect)
 from model import connect_to_db
+import json
 import crud
 import os
 
@@ -9,7 +10,7 @@ from jinja2 import StrictUndefined
 
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY')
+app.secret_key = os.environ.get("SECRET_KEY")
 app.jinja_env.undefined = StrictUndefined
 
 
@@ -42,29 +43,43 @@ def therapist_details(therapist_id):
 
 
 ######################## FAVORITE ROUTES ########################
-@app.route('/therapists/<therapist_id>/add_fav_therapist', methods = ['POST'])
-def add_therapist(therapist_id):
+
+
+@app.route('/therapists/<therapist_id>/fav-therapist', methods = ['POST'])
+def fav_therapist(therapist_id):
     """Add therapist to favorites."""
 
     therapist = crud.get_therapist_by_id(therapist_id)
     session['therapist'] = therapist
 
     if session['user_id']:
-        crud.create_fav(crud.get_user_by_id(session['user_id']), therapist)
+        db_favorite = crud.create_fav(session['user_id'], session['therapist'])
         flash('Therapist favorited.')
-    flash('Log in to see your favorite therapist(s).')
-
-    return redirect('/')
+        return redirect (f'/therapists/{ therapist.therapist_id }')
+    else:
+        flash('Log in to see your favorite therapist(s).')
+        return redirect('/')
 
 
 ######################## USER REGISTRATION AND LOGIN ROUTES ########################
-#@app.route('/users')
-#def all_users():
-    #"""View all users."""
+@app.route('/all-users')
+def all_users():
+    """View all users."""
 
-    #users = crud.get_users()
+    users = crud.get_users()
 
-    #return render_template('all_users.html', users=users)
+    return render_template('all_users.html', users=users)
+
+
+@app.route('/all-users/<user_id>')
+def user_details(user_id):
+    """Show details page for user with favorited therapists."""
+
+    user = crud.get_user_by_id(user_id)
+    favorites = crud.get_fav_therapists(userId)
+
+    return render_template('user_details.html', user=user, 
+                                                favorites=favorites)
 
 
 @app.route('/create_user', methods = ['POST'])

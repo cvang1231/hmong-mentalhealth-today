@@ -16,10 +16,10 @@ def create_user(email, password, zipcode):
 
     return user
 
-#def get_users():
-    #"""Return all users in database."""
+def get_users():
+    """Return all users in database."""
 
-    #return User.query.all()
+    return User.query.all()
 
 
 def get_user_by_id(user_id):
@@ -37,23 +37,22 @@ def get_user_by_email(email):
 ######################## Functions for therapist! ########################
 
 
-#def add_therapist(name, email, clinic, website, lat, long, specialty, img):
-    #"""Create and return a new therapist."""
+def add_therapist(name, clinic, website, email, specialty, img):
+    """Create and return a new therapist."""
 
-    #therapist = Therapist(name=name, 
-                        #email=email,
-                        #clinic=clinic,
-                        #website=website,
-                        #lat=lat,
-                        #long=long,
-                        #specialty=specialty,
-                        #img=img
-                        #)
+    therapist = Therapist(
+                        name=name, 
+                        clinic=clinic,
+                        website=website,
+                        email=email,
+                        specialty=specialty,
+                        img=img
+                        )
 
-    #db.session.add(therapist)
-    #db.session.commit()
+    db.session.add(therapist)
+    db.session.commit()
 
-    #return therapist
+    return therapist
 
 
 def get_therapists():
@@ -88,8 +87,8 @@ def create_fav(user_id, therapist_id):
     return favorite
 
 
-def get_fav_by_id(fav_id):
-    """Get pairing between user and their fav therapist by fav_id."""
+def get_user_favorites_by_id(fav_id):
+    """Return a new user favorite."""
 
     return Favorite.query.get(fav_id)
 
@@ -102,7 +101,7 @@ def get_fav_therapists(userId):
 
     for fav in user_favs:
 
-        therapist = Therapist.query.filter(Therapist.therapist_id == therapist_id).all()
+        therapist = Therapist.query.filter(Therapist.therapist_id == fav.therapist_id).all()
 
         list_of_therapists.append(therapist)
 

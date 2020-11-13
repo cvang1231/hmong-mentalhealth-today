@@ -1,9 +1,7 @@
 """Script to see database."""
 
 import os
-import json
-from random import choice, randint
-
+import csv
 import crud
 import model
 import server
@@ -14,37 +12,37 @@ os.system('createdb hmongmentalhealthtoday')
 model.connect_to_db(server.app)
 model.db.create_all()
 
-# Load data from data/hmongtherapists.json and save it to variable
-with open('data/hmongtherapists.json') as f:
-    therapist_data = json.loads(f.read())
-
-# Create therapists, store them in list
 therapist_in_db = []
 
-# Loop through each dictionary in therapist_data
-for therapist in therapist_data:
+# Load data from data/hmongtherapists.csv
+# Have DictReader turn hmongtherapists.csv into readable dictionary
+# Save readable dictionary to therapist_data
+with open('data/hmongtherapists.csv') as csvFile:
+  fieldnames = ['name', 'clinic', 'website', 'email', 'specialty','img']
+  therapist_data = csv.DictReader(csvFile, fieldnames=fieldnames, skipinitialspace=True)
+    
 
-    name, email, clinic, website, lat, long, specialty, img = (
-      therapist['name'],
-      therapist['email'],
-      therapist['clinic'],
-      therapist['website'],
-      therapist['lat'],
-      therapist['long'],
-      therapist['specialty'],
-      therapist['img']  
-    )
-    # Supply arguments to crud.py
-    db_therapist = crud.add_therapist(name, 
-                                    email,
-                                    clinic, 
-                                    website, 
-                                    lat, 
-                                    long, 
-                                    specialty, 
-                                    img)
-    # Add each new therapist to db_therapist list
-    therapist_in_db.append(db_therapist)
+
+# Loop through each dictionary in therapist_data
+  for therapist in therapist_data:
+    name, clinic, website, email, specialty, img = (
+                                                  therapist['name'],
+                                                  therapist['clinic'],
+                                                  therapist['website'],
+                                                  therapist['email'],
+                                                  therapist['specialty'],
+                                                  therapist['img'])
+                                                  
+    #Supply arguments to crud.py
+    db_therapist = crud.add_therapist(
+                                      name, 
+                                      clinic,
+                                      website, 
+                                      email, 
+                                      specialty, 
+                                      img)
+    #Add each new therapist to db_therapist list
+    therapist_in_db.append(db_therapist) 
 
 
 
