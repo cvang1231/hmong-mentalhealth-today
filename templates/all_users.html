@@ -1,0 +1,16 @@
+4 lines (10 sloc)  267 Bytes
+  
+{% extends 'base.html' %}
+
+{% block title %}All Users{% endblock %}
+
+{% block body %}
+    <h1>All Users</h1>
+
+    {% for user in users %}
+    <ul>
+        <li><a href = "/all-users/{{user.user_id}}">{{user.email}}</a></li>
+    </ul>
+
+    {% endfor %}
+{% endblock %}  
