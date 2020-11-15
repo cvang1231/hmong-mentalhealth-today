@@ -1,7 +1,7 @@
 """Script to see database."""
 
 import os
-import csv
+import json
 import crud
 import model
 import server
@@ -17,32 +17,39 @@ therapist_in_db = []
 # Load data from data/hmongtherapists.csv
 # Have DictReader turn hmongtherapists.csv into readable dictionary
 # Save readable dictionary to therapist_data
-with open('data/hmongtherapists.csv') as csvFile:
-  fieldnames = ['name', 'clinic', 'website', 'email', 'specialty','img']
-  therapist_data = csv.DictReader(csvFile, fieldnames=fieldnames, skipinitialspace=True)
-    
+#with open('data/therapists.csv', encoding='utf-8-sig') as csvFile:
+ # fieldnames = ['name', 'clinic', 'website', 'email', 'specialty', 'lat', 'long', 'img']
+  #therapist_data = csv.DictReader(csvFile, fieldnames=fieldnames, skipinitialspace=True)
+
+with open('data/therapists.json') as f:
+  therapist_data = json.loads(f.read())
 
 
 # Loop through each dictionary in therapist_data
   for therapist in therapist_data:
-    name, clinic, website, email, specialty, img = (
+    name, clinic, website, email, specialty, lat, long, img = (
                                                   therapist['name'],
                                                   therapist['clinic'],
                                                   therapist['website'],
                                                   therapist['email'],
                                                   therapist['specialty'],
+                                                  therapist['lat'],
+                                                  therapist['long'],
                                                   therapist['img'])
                                                   
     #Supply arguments to crud.py
-    db_therapist = crud.add_therapist(
+    db_therapist = crud.create_therapist(
                                       name, 
                                       clinic,
                                       website, 
                                       email, 
                                       specialty, 
+                                      lat,
+                                      long,
                                       img)
     #Add each new therapist to db_therapist list
     therapist_in_db.append(db_therapist) 
+
 
 
 
