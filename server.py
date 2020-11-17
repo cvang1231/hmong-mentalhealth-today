@@ -1,10 +1,10 @@
 """Server for Hmong Mental Health Today Webapp"""
 
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from model import connect_to_db
-import json
-import crud
+import crud, json
 import os
+
 
 from jinja2 import StrictUndefined
 
@@ -33,58 +33,47 @@ def view_therapists():
     return render_template('therapists.html', therapists=therapists)
 
 
-@app.route('/therapists/<therapist_id>')
-def therapist_details(therapist_id):
+@app.route('/therapists/<thrpst_id>')
+def therapist_details(thrpst_id):
     """View details on a therapist."""
 
-    therapist = crud.get_therapist_by_id(therapist_id)
+    therapist = crud.get_therapist_by_id(thrpst_id)
 
     return render_template('therapist_details.html', therapist=therapist)
 
 
-######################## FAVORITE ROUTES ########################
-
-
-@app.route('/therapists/<therapist_id>/fav-therapist', methods = ['POST'])
-def fav_therapist(therapist_id):
+######################## FAVORITE LISTS ROUTES ########################
+@app.route('/therapists/<thrpst_id>/fav-therapist', methods = ['POST'])
+def fav_therapist(thrpst_id):
     """Add therapist to favorites."""
 
-    therapist = crud.get_therapist_by_id(therapist_id)
-    session['therapist'] = therapist
-
     if session['user_id']:
-        db_favorite = crud.create_fav(session['user_id'], session['therapist'])
+        crud.create_fav(session['user_id'], thrpst_id)
         flash('Therapist favorited.')
-        return redirect (f'/therapists/{ therapist.therapist_id }')
+        return redirect (f'/therapists/{ thrpst_id }')
     else:
         flash('Log in to see your favorite therapist(s).')
         return redirect('/')
 
 
+@app.route('/delete_favorite', methods=['POST'])
+def delete_favorite():
+    """Delete favorite from database."""
+
+    # Use fav_id to call favorite
+    fav_id = request.form.get('favorite')
+    favorite = crud.Favorite.query.get(fav_id)
+
+    db.session.delete(favorite)
+    db.session.commit()
+
+    return flash('Deleted.')
+
+
 ######################## USER REGISTRATION AND LOGIN ROUTES ########################
-@app.route('/all-users')
-def all_users():
-    """View all users."""
-
-    users = crud.get_users()
-
-    return render_template('all_users.html', users=users)
-
-
-@app.route('/all-users/<user_id>')
-def user_details(user_id):
-    """Show details page for user with favorited therapists."""
-
-    user = crud.get_user_by_id(user_id)
-    favorites = crud.get_fav_therapists(userId)
-
-    return render_template('user_details.html', user=user, 
-                                                favorites=favorites)
-
-
-@app.route('/create_user', methods = ['POST'])
+@app.route('/create_user', methods = ['GET', 'POST'])
 def register_user():
-    """Creates a new user with given inputs. Stores user inputs in db."""
+    """Creates a new user with given inputs."""
 
     email = request.form.get('email')
     password = request.form.get('password')
@@ -93,7 +82,7 @@ def register_user():
     user = crud.get_user_by_email(email)
 
     if user == None:
-        crud.create_user(email, password, zipcode)
+        new_user = crud.create_user(email, password, zipcode)
         flash('Account created! You can now login.')
 
         return redirect('/login')
@@ -104,9 +93,23 @@ def register_user():
         return redirect('/')
 
 
+@app.route('/users/<user_id>')
+def user_details(user_id):
+    """View details page for a particular user."""
+
+    if session.get('user_id'):
+        user = crud.get_user_by_id(session['user_id'])
+        user_lists = crud.get_lists_by_user_id(session['user_id'])
+        list = user_lists
+        return render_template('users.html', user=user, list=list)
+    else:
+        flash('Please login to view your details.')
+        return redirect('/login')
+
+
 @app.route('/login')
 def log_in():
-    """View login page."""
+    """Redirect user to login page when LOG IN button is clicked."""
 
     return render_template('login.html')
 
@@ -130,6 +133,13 @@ def handle_login():
         flash('Incorrect password and/or email. Please try again.')
 
         return redirect('/login')
+
+
+@app.route('/log_out')
+def log_user_out():
+    del session['user_id']
+
+    return redirect('/')
 
 
 
