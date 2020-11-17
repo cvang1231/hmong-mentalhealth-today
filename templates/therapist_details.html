@@ -19,8 +19,10 @@
 <p>
     {{ therapist.specialty }}
 </p>
-<form action="/therapists/{{ therapist.therapist_id }}/fav-therapist" method="POST">
-    <button>Click to favorite {{ therapist.name }}</button>
-</form>
+
+{% if session['user_id'] %}
+<form action="/therapists/{{ therapist.thrpst_id }}/fav-therapist" method="POST">
+    <button>Click to favorite {{ therapist.name }}</button></form>
+{% endif %}
 
 {% endblock %}
