@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}User Details{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h1>{{ user.email }}</h1>
+            {{ user.zipcode }}
+            <p>
+                <h4>Your Favorite Therapists:</h4>
+            </p>
+
+            <ul id='user-favs'>
+              {% for therapist in list_therapists %}
+                    <li>
+                        <p>{{ therapist }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <a href='/therapists'>View Therapists</a> 
+            <a href='/'>Homepage</a>
+
+         
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
