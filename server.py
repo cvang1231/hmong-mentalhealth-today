@@ -33,6 +33,14 @@ def view_therapists():
     return render_template('therapists.html', therapists=therapists)
 
 
+@app.route('/therapists/county')
+def therapist_by_county(county):
+
+    county = Therapist.query.filter(Therapist.county == county).all()
+
+    return render_template('therapists.html', county=county)
+    
+
 @app.route('/therapists/<thrpst_id>')
 def therapist_details(thrpst_id):
     """View details on a therapist."""
@@ -46,6 +54,9 @@ def therapist_details(thrpst_id):
 @app.route('/therapists/<thrpst_id>/fav-therapist', methods = ['POST'])
 def fav_therapist(thrpst_id):
     """Add therapist to favorites."""
+
+    # This works on the Click to favorite button on therapist_details page
+    # TODO: WRITE CODE LETTING USER KNOW THEY CAN'T ADD SAME THERAPIST
 
     if session['user_id']:
         crud.create_fav(session['user_id'], thrpst_id)
@@ -93,15 +104,16 @@ def register_user():
         return redirect('/')
 
 
-@app.route('/users/<user_id>')
+@app.route('/user/<user_id>')
 def user_details(user_id):
     """View details page for a particular user."""
 
-    if session.get('user_id'):
-        user = crud.get_user_by_id(session['user_id'])
-        user_lists = crud.get_lists_by_user_id(session['user_id'])
-        list = user_lists
-        return render_template('users.html', user=user, list=list)
+    user_id = session.get('user_id')
+
+    if user_id:
+        user = crud.get_user_by_id(user_id)
+        list_therapists = crud.get_fav_therapists(user_id)
+        return render_template('user_details.html', user=user, list_therapists=list_therapists)
     else:
         flash('Please login to view your details.')
         return redirect('/login')
@@ -116,7 +128,8 @@ def log_in():
 
 @app.route('/handle_login', methods = ['POST'])
 def handle_login():
-    """Checks to see if password and email match with given inputs."""
+    """Checks to see if email and password match with given inputs."""
+    # This is the page where user logs in with their email and pw
 
     email = request.form.get('email')
     password = request.form.get('password')
