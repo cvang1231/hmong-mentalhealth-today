@@ -38,7 +38,7 @@ class Therapist(db.Model):
     __tablename__ = 'therapists'
 
     # primary key for therapists table
-    thrpst_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    thrpst_id = db.Column(db.Integer, autoincrement=True, primary_key=True, unique=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     clinic = db.Column(db.String, nullable=False)
     website = db.Column(db.String)
@@ -51,7 +51,7 @@ class Therapist(db.Model):
 
     def __repr__(self):
 
-        return f'<Therapist thrpst_id={self.thrpst_id} name={self.name} email={self.email}>'
+        return f'<Therapist thrpst_id={self.thrpst_id} name={self.name} email={self.email} county={self.county}>'
 
 
 class Favorite(db.Model):
@@ -60,7 +60,7 @@ class Favorite(db.Model):
     __tablename__ = 'favorites'
 
     # primary key for favorites table
-    fav_id = db.Column(db.Integer, primary_key=True)
+    fav_id = db.Column(db.Integer, primary_key=True, unique=True)
     # foreign key from users table
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     # foreign key from therapists table
