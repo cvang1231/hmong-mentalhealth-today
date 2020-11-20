@@ -101,19 +101,24 @@ def get_user_favorites_by_id(fav_id):
     return Favorite.query.get(fav_id)
 
 
-def get_fav_therapists(user_id):
+def get_fav_therapists_name_by_id(user_id):
     """Return a user's favorite therapists."""
 
-    list_therapists = []
-    user_favs = Favorite.query.filter(Favorite.user_id == user_id).all()
+    therapist_ids = db.session.query(Favorite.thrpst_id).filter_by(user_id=user_id)
 
-    for fav in user_favs:
+    list_favs = []
+    for thrpst in therapist_ids:
+        list_favs.append(db.session.query(Therapist.name).filter_by(thrpst_id=thrpst.thrpst_id).all())
 
-        therapist = Therapist.query.filter(Therapist.thrpst_id == fav.thrpst_id).all()
+    remove_content = ["[", "(", "]", ")", "',", "'"]
+    fav_str = repr(list_favs)
 
-        list_therapists.append(therapist)
+    for content in remove_content:
+        fav_str = fav_str.replace(content, '')
+    
+    joined_favs = fav_str.split(",")
 
-    return list_therapists
+    return joined_favs
 
 
 
