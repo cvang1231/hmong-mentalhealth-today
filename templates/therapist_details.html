@@ -7,10 +7,13 @@
     <h1>{{ therapist.name }}</h1>
 </p>
 <p>
-    {{ therapist.email }}
+    County: {{ therapist.county }}
 </p>
 <p>
-    {{ therapist.clinic }}
+    Email: {{ therapist.email }}
+</p>
+<p>
+    Clinic: {{ therapist.clinic }}
 </p>
 <p>
     <a href="{{ therapist.website }}">{{ therapist.website }}</a>
@@ -22,7 +25,11 @@
 
 {% if session['user_id'] %}
 <form action="/therapists/{{ therapist.thrpst_id }}/fav-therapist" method="POST">
-    <button>Click to favorite {{ therapist.name }}</button></form>
+    <button id="add-fav">Click to favorite {{ therapist.name }}</button>
+</form>
 {% endif %}
+<p>
+    <a href='/therapists'>View All Therapists</a>
+</p>
 
 {% endblock %}
