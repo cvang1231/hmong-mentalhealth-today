@@ -33,13 +33,41 @@ def view_therapists():
     return render_template('therapists.html', therapists=therapists)
 
 
-@app.route('/therapists/county')
-def therapist_by_county(county):
+@app.route('/therapists/dakota-county')
+def therapist_by_dakota_county():
+    """View all therapists by county."""
 
-    county = Therapist.query.filter(Therapist.county == county).all()
+    therapists = crud.get_therapists()
 
-    return render_template('therapists.html', county=county)
-    
+    return render_template('dakota.html', therapists=therapists)
+
+
+@app.route('/therapists/hennepin-county')
+def therapist_by_hennepin_county():
+    """View all therapists by county."""
+
+    therapists = crud.get_therapists()
+
+    return render_template('hennepin.html', therapists=therapists)
+
+
+@app.route('/therapists/ramsey-county')
+def therapist_by_ramsey_county():
+    """View all therapists by county."""
+
+    therapists = crud.get_therapists()
+
+    return render_template('ramsey.html', therapists=therapists)
+
+
+@app.route('/therapists/washington-county')
+def therapist_by_washington_county():
+    """View all therapists by county."""
+
+    therapists = crud.get_therapists()
+
+    return render_template('washington.html', therapists=therapists)
+
 
 @app.route('/therapists/<thrpst_id>')
 def therapist_details(thrpst_id):
@@ -112,8 +140,11 @@ def user_details(user_id):
 
     if user_id:
         user = crud.get_user_by_id(user_id)
-        list_therapists = crud.get_fav_therapists(user_id)
-        return render_template('user_details.html', user=user, list_therapists=list_therapists)
+        joined_fav = crud.get_fav_therapists_name_by_id(user_id)
+        print(joined_fav)
+        print(type(user))
+        print("-----------------")
+        return render_template('user_details.html', user=user, joined_fav=joined_fav)
     else:
         flash('Please login to view your details.')
         return redirect('/login')
