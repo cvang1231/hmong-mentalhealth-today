@@ -4,6 +4,20 @@
 
 {% block body %}
 <h1>Therapist(s) in Hennepin County</h1>
+<div id="county-list">
+    <h4>Filter by County:</h4>
+    <form>
+        <input type="radio" name="county" value="dakota">
+        <label>Dakota</label>
+        <input type="radio" name="county" value="hennepin">
+        <label>Hennepin</label>
+        <input type="radio" name="county" value="ramsey">
+        <label>Ramsey</label>
+        <input type="radio" name="county" value="washington">
+        <label>Washington</label>
+        <button type="submit">submit</button>
+    </form>
+</div>
 <ul>
     {% for therapist in therapists %}
     {% if therapist.county == "Hennepin" %}
