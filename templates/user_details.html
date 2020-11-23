@@ -14,9 +14,9 @@
             </p>
 
             <ul id='user-favs'>
-              {% for therapist in list_therapists %}
+              {% for fav in joined_fav %}
                     <li>
-                        <p>{{ therapist }}</p>
+                        <p>{{ fav }}</p>
                     </li>
                 {% endfor %}
             </ul>
