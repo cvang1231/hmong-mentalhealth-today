@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Hmong Therapists in Ramsey County {% endblock title %}
+
+{% block body %}
+<h1>Therapist(s) in Ramsey County</h1>
+<ul>
+    {% for therapist in therapists %}
+    {% if therapist.county == "Ramsey" %}
+    <li>
+    <a href='/therapists/{{ therapist.thrpst_id}}'>
+        {{ therapist.name }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+<p>
+    <a href='/therapists'>View All Therapists</a>
+</p>
+{% endblock %}

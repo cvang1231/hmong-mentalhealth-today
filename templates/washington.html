@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Hmong Therapists in Washington County {% endblock title %}
+
+{% block body %}
+<h1>Therapist(s) in Washington County</h1>
+<ul>
+    {% for therapist in therapists %}
+    {% if therapist.county == "Washington" %}
+    <li>
+    <a href='/therapists/{{ therapist.thrpst_id}}'>
+        {{ therapist.name }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+<p>
+    <a href='/therapists'>View All Therapists</a>
+</p>
+{% endblock %}
