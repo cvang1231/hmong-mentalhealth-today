@@ -8,20 +8,23 @@
         <div class="col">
 
             <h1>{{ user.email }}</h1>
-            {{ user.zipcode }}
             <p>
                 <h4>Your Favorite Therapists:</h4>
             </p>
 
-            <ul id='user-favs'>
-              {% for fav in joined_fav %}
+            <form action="/delete_favorite" id="list-favs" method='POST'>
+                    {% for fav in joined_fav %}
                     <li>
-                        <p>{{ fav }}</p>
+                        <input type="checkbox" name="therapists" value="therapist-name">
+                        <label>{{ fav }}</label>
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+            </form>
+            <p>
+                <button type="submit">Delete</button>
+            </p>
 
-            <a href='/therapists'>View Therapists</a> 
+            <p><a href='/therapists'>View Therapists</a></p>
             <a href='/'>Homepage</a>
 
          
