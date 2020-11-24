@@ -5,7 +5,7 @@
 
 // filter therapists by county
 $(function(){
-    $('form').on('submit',function(){
+    $('#select-county').on('submit',function(){
         event.preventDefault();
         var value=$("input[name=county]:checked").val();
         switch(value){
