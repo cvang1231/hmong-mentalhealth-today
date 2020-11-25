@@ -84,15 +84,35 @@ def fav_therapist(thrpst_id):
     """Add therapist to favorites."""
 
     # This works on the Click to favorite button on therapist_details page
-    # TODO: WRITE CODE LETTING USER KNOW THEY CAN'T ADD SAME THERAPIST
 
-    if session['user_id']:
-        crud.create_fav(session['user_id'], thrpst_id)
-        flash('Therapist favorited.')
-        return redirect (f'/therapists/{ thrpst_id }')
-    else:
-        flash('Log in to see your favorite therapist(s).')
-        return redirect('/')
+    user_id = session['user_id']
+
+    # try seeing if user and therapist pairing are in database
+    try:
+        favorite = crud.get_fav(user_id, thrpst_id)
+        # if not in database
+        if not favorite:
+            # create user and therapist pairing
+            crud.create_fav(user_id, thrpst_id)
+            flash('You just added this therapist as a favorite.')
+        else:
+            flash('Therapist already favorited.')
+    # this code is executed if exception is raised in try block
+    # if user_id not present, flash message will execute
+    except:
+        flash('Please log in to favorite a therapist.')
+
+    return redirect(f'/therapists/{ thrpst_id }')
+
+
+    #if session['user_id']:
+        #crud.create_fav(session['user_id'], thrpst_id)
+        #flash('Therapist favorited.')
+        #return redirect (f'/therapists/{ thrpst_id }')
+
+        #if session['user_id'] == None:
+            #flash('Log in to favorite a therapist.')
+            #return redirect(f'/therapists/{ thrpst_id }')
 
 
 @app.route('/delete_favorite', methods=['POST'])
@@ -103,7 +123,7 @@ def delete_favorite():
     fav_id = request.form.get('favorite')
     favorite = crud.Favorite.query.get(fav_id)
 
-    db.session.delete(favorite)
+    db.session.delete(joined_fav)
     db.session.commit()
 
     return flash('Deleted.')
@@ -142,7 +162,7 @@ def user_details(user_id):
         user = crud.get_user_by_id(user_id)
         joined_fav = crud.get_fav_therapists_name_by_id(user_id)
         print(joined_fav)
-        print(type(user))
+        print(type(joined_fav))
         print("-----------------")
         return render_template('user_details.html', user=user, joined_fav=joined_fav)
     else:
@@ -179,10 +199,12 @@ def handle_login():
         return redirect('/login')
 
 
-@app.route('/log_out')
+@app.route('/logout')
 def log_user_out():
-    del session['user_id']
+    """Logs out user."""
 
+    del session['user_id']
+    flash('Logged out sucessfully.')
     return redirect('/')
 
 
