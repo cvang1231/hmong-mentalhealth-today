@@ -71,19 +71,13 @@ def get_therapist_by_email(email):
     return Therapist.query.filter(Therapist.email == email).first()
 
 
-def get_therapist_by_county(county):
-    """Return therapist by county."""
-
-    return Therapist.query.filter(Therapist.county == county).all()
-
-
 def get_therapist_by_id(thrpst_id):
     """Return a therapist by primary key."""
 
     return Therapist.query.get(thrpst_id)
 
 
-######################## Functions for lists! ########################   
+######################## Functions for favs! ########################   
 def create_fav(user_id, thrpst_id):
     """Create and return a new favorite."""
 
@@ -95,8 +89,14 @@ def create_fav(user_id, thrpst_id):
     return favorite
 
 
-def get_user_favorites_by_id(fav_id):
-    """Return a new user favorite."""
+def get_fav(user_id, thrpst_id):
+    """Return a favorite by user id and thrpst id."""
+
+    return Favorite.query.filter_by(user_id=user_id, thrpst_id=thrpst_id).all()
+
+
+def get_favorites_by_id(fav_id):
+    """Return favorite pair by primary."""
 
     return Favorite.query.get(fav_id)
 
