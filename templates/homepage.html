@@ -2,13 +2,45 @@
 {% block title %}Hmong Mental Health Today Homepage{% endblock title %}
 
 {% block body %}
+    <!-- Image Carousel -->
+    <div id="carousel" class="carousel slide" data-ride="carousel"
+        data-interval="650000">
 
-    <h1>Hmong Mental Health Today</h1>
-    <p>Many of us have been deeply wounded by our history and the generations before us,
-        so it is now more important than ever for healing and for reflection.
-        Let's continue to push towards healthy changes today.
-    </p>
+    <!-- Carousel Content -->
+      <div class="carousel-inner">
 
+        <div class="carousel-item active">
+          <img src="static/images/hmongimg.jpg" alt="" class="w-100">
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-8 bg-custom d-none d-lg-block py-3 px-0">
+                  <h1>Hmong Mental Health Today</h1>
+                  <div class="border-top border-light w-50 mx-auto my-3"></div>
+                  <h6 class="pb-3">Many of us have been deeply wounded by our history and the generations before us, 
+                    so it is now more important than ever for healing and for reflection. 
+                    Let's continue to push towards healthy changes today.</h6>
+                  <a href="" class="btn btn-light btn-lrg">Make an Account</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <!-- Previous & Next Buttons -->
+    <a href="#carousel" class="carousel-control-prev" role="button" 
+      data-slide="prev">
+      <span class="fad fa-chevron-left fa-2x"></span>
+    </a>
+
+    <a href="#carousel" class="carousel-control-next" role="button" 
+      data-slide="next">
+      <span class="fad fa-chevron-r ight fa-2x"></span>
+    </a>
+  
+    </div>
 
     <h2>Make an Account</h2>
     <form action='/create_user' method=POST>
@@ -26,10 +58,10 @@
             </p>
     </form>
 
-    <h5>OR</h5>
+    <!--<h5>OR</h5>
     <form action='/login'>
         <button type="submit" value='Submit'>Login</button>
-        <!--
+        
         <div>
             <p>
             <label>Email</label> <input type='text' name='email'> 
@@ -40,7 +72,7 @@
             <p>
             <input type='submit'>
             </p>
-        </div> --->
-    </form>
+        </div> 
+    </form>--->
 
 {% endblock %}
