@@ -13,8 +13,12 @@
     <!-- Load Font Awesome -->
     <script src="https://use.fontawesome.com/releases/v5.0.11/css/all.css"></script>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- Load our stylesheet -->
-    <link href="/static/project.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -26,20 +30,37 @@
   </head>
   <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">HmongMentalHealthToday</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-link" href="/therapists">View All Therapists</a>
-          <a class="nav-link" href="/login">Log In</a>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="col-12 text-right"> 
+          <p>Based in Minnesota.</p>
         </div>
       </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar bg-light navbar-light navbar-expand-lg">
+      <div class="container">
+
+        <a href="/" class="navbar-brand"><img src="" alt="Logo" title="Logo"></a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/therapists" class="nav-link">View All Therapists</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+          </ul>
+        </div>
+
+      </div>
     </nav>
+
     {% for msg in get_flashed_messages() %}
       <p class="flash-msg">
         {{ msg }}
@@ -51,5 +72,20 @@
     {% block after_body %}{% endblock %}
     <!-- Javascript file -->
     <script type="text/javascript" src="/static/main.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   </body>
 </html>
