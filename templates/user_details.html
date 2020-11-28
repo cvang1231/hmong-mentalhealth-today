@@ -13,16 +13,16 @@
             </p>
 
             <form action="/delete_favorite" id="list-favs" method='POST'>
-                    {% for fav in joined_fav %}
+                    {% for fav in list_favs %}
                     <li>
-                        <input type="checkbox" name="therapists" value="therapist-name">
+                        <input type="checkbox" name="therapist" id="therapist_name">
                         <label>{{ fav }}</label>
                     </li>
                     {% endfor %}
+                    <p>
+                        <button type="submit">Delete</button>
+                    </p>
             </form>
-            <p>
-                <button type="submit">Delete</button>
-            </p>
 
             <p><a href='/therapists'>View Therapists</a></p>
             <a href='/'>Homepage</a>
