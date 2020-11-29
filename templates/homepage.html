@@ -17,10 +17,9 @@
                 <div class="col-8 bg-custom d-none d-lg-block py-3 px-0">
                   <h1>Hmong Mental Health Today</h1>
                   <div class="border-top border-light w-50 mx-auto my-3"></div>
-                  <h6 class="pb-3">Many of us have been deeply wounded by our history and the generations before us, 
-                    so it is now more important than ever for healing and for reflection. 
-                    Let's continue to push towards healthy changes today.</h6>
-                  <a href="" class="btn btn-light btn-lrg">Make an Account</a>
+                  <h6 class="pb-3">It is now more important than ever for healing and for reflection. 
+                    Let's push towards healthy changes today.</h6>
+                  <a href="#" id="make-account-button" class="btn btn-light btn-lrg">Make an Account</a>
                 </div>
               </div>
             </div>
@@ -42,7 +41,22 @@
   
     </div>
 
-    <h2>Make an Account</h2>
+    <!-- MODAL SECTION --> 
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">+</div>
+            <form action="/create_account" method=POST>
+                <div class = "modal-input">
+                <input type="text" name="email" placeholder="email" id="email" required>
+                <input type='password' name='password' placeholder='password' id='password' required>
+                <input type='zipcode' name='zipcode' placeholder='zipcode' id='zipcode'>
+                <input type='submit' value='Create Account'> 
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--<h2>Make an Account</h2>
     <form action='/create_user' method=POST>
             <p>
             <label>Email</label> <input type='text' name='email' placeholder='email' id='email' required>
@@ -58,7 +72,7 @@
             </p>
     </form>
 
-    <!--<h5>OR</h5>
+    <h5>OR</h5>
     <form action='/login'>
         <button type="submit" value='Submit'>Login</button>
         
