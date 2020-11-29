@@ -16,3 +16,15 @@ $(function(){
         }
     });
 });
+
+// pop-up modal
+document.getElementById('make-account-button').addEventListener('click',
+function() {
+    document.querySelector('.bg-modal').style.display = 'flex'
+});
+
+// exit modal
+document.querySelector('.close').addEventListener('click',
+function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+});
