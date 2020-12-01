@@ -3,28 +3,72 @@
 {% block title %} Hmong Therapists in Dakota County {% endblock title %}
 
 {% block body %}
-<h1>Therapist(s) in Dakota County</h1>
-<div id="county-list">
-    <h4>Filter by County:</h4>
-    <form id ="select-county">
-        <input type="radio" name="county" value="dakota">
-        <label>Dakota</label>
-        <input type="radio" name="county" value="hennepin">
-        <label>Hennepin</label>
-        <input type="radio" name="county" value="ramsey">
-        <label>Ramsey</label>
-        <input type="radio" name="county" value="washington">
-        <label>Washington</label>
-        <button type="submit">submit</button>
-    </form>
+<div class="therapist-header">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="therapist-caption">
+                <h1><i>Therapist(s) in Dakota County</i></h1>
+                <p>Local to the Twin Cities in Metro Area of Minnesota.</p>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="therapist-county-filter">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div id="county-list">
+                <div class="county-caption">
+                    <h5>Filter by County:</h5>
+                    <form id="select-county">
+                        <input type="radio" name="county" value="dakota">
+                        <label>Dakota</label>
+                        <input type="radio" name="county" value="hennepin">
+                        <label>Hennepin</label>
+                        <input type="radio" name="county" value="ramsey">
+                        <label>Ramsey</label>
+                        <input type="radio" name="county" value="washington">
+                        <label>Washington</label>
+                        <p>
+                            <button type="submit" class="btn btn-outline-dark btn-md">continue</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<ul>
+
     {% for therapist in therapists %}
     {% if therapist.county == "Dakota" %}
-    <li>
-    <a href='/therapists/{{ therapist.thrpst_id}}'>
-        {{ therapist.name }}</a>
-    </li>
+    <div class="container">
+            
+        <div class="therapist row content">
+            <div class="col-md-6 mb-3">
+                <img src="{{ therapist.img }}" class="w-50" alt="therapist-image">
+            </div>
+    
+            <div class="col-md-6">
+                <h2 class="therapist-name-text mb-3">{{ therapist.name }}</h2>
+    
+                <div>
+                    <div class="therapist-info-group">
+                        <p class="therapist-info">Practices at {{ therapist.clinic }} in {{ therapist.county }} County.</p>
+                    </div>
+                    <div class="therapist-info-group">
+                        <p class="therapist-info"><b>Email:</b> {{ therapist.email }}</p>
+                    </div>
+                    <a href='/therapists/{{ therapist.thrpst_id}}' class="btn btn-outline-dark btn-md">
+                        More Details
+                    </a>
+ 
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
     {% endif %}
     {% endfor %}
 </ul>
