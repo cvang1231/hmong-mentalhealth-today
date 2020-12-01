@@ -2,16 +2,32 @@
 {% block title %}Login Page{% endblock title %}
 
 {% block body %}
-<form action='/handle_login' method=POST>
-<p>
-    <label>Email</label> <input type='text' name='email'> 
-</p>
- <p>
-    <label>Password</label> <input type='password' name='password'>
-</p>
-<p>
-    <button type="submit">Log In</button>
-</p>
-<form>
+<div class="container">
+    <div class="row content">
+        <div class="col-md-6 mb-3">
+            <img src="static/images/hmongimg.jpg" class="img-fluid" alt="image">
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="signin-text mb-3">Log In</h3>
+
+            <form>
+                <div class="form-login-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="form-login-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class="form-login-group">
+                    <button class="btn btn-outline-dark btn-md">Login</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}
