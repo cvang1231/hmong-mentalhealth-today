@@ -28,30 +28,21 @@
 
       </div>
 
-    <!-- Previous & Next Buttons -->
-    <a href="#carousel" class="carousel-control-prev" role="button" 
-      data-slide="prev">
-      <span class="fad fa-chevron-left fa-2x"></span>
-    </a>
-
-    <a href="#carousel" class="carousel-control-next" role="button" 
-      data-slide="next">
-      <span class="fad fa-chevron-r ight fa-2x"></span>
-    </a>
-  
-    </div>
-
     <!-- MODAL SECTION --> 
     <div class="bg-modal">
         <div class="modal-content">
             <div class="close">+</div>
             <form action="/create_account" method=POST>
-                <div class = "modal-input">
-                <input type="text" name="email" placeholder="email" id="email" required>
-                <input type='password' name='password' placeholder='password' id='password' required>
-                <input type='zipcode' name='zipcode' placeholder='zipcode' id='zipcode'>
-                <input type='submit' value='Create Account'> 
-                </div>
+                <div class="modal-input-form">
+                  <input type="text" name="email" placeholder="email" id="email" required>
+                  <div>
+                    <div class="modal-input-form">
+                      <input type=password' name='password' placeholder='password' id='password' required>
+                    </div>
+                    <div class="modal-input-form">
+                      <input type='zipcode' name='zipcode' placeholder='zipcode' id='zipcode'>
+                    </div>
+                    <input type='submit' value='Create Account'> 
             </form>
         </div>
     </div>
