@@ -130,15 +130,15 @@ body {
  }
 
 
- /*===== THERAPIST PAGE =====*/
+  /*===== THERAPIST PAGE =====*/
  .therapist-name-text {
    font-size: 3.0rem;
  }
  .therapist-info-group {
-  font-size: 1.5rem;
+   font-size: 1.5rem;
  }
  .therapist-header {
-   background: #52802d;
+   background: black;
    height: 10.0rem;
    margin-bottom: 10px;
    padding: 20px
@@ -158,23 +158,74 @@ body {
   margin-left: 100px
  }
 
-  /*===== FIXED BACKGROUND IMG =====*/
-  
-  
-  
-  /*-- Emoji Navbar --*/
-  
-  
+
+  /*===== THERAPIST DETAIL PAGE =====*/
+
+  /* Image and Name Title */
+  .therapist-details-one {
+    background: black;
+    padding: 2rem;
+    margin: 0px 90px 0px 90px;
+  }
+  .therapist-details-one h1{
+    color: white;
+    text-align: center;
+  }
+  .therapist-img img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  /* Embroidery Pattern Page Separator */
+  .one {
+    background: #0727b3;
+    padding: .3rem;
+    margin: 0px 90px 0px 90px;
+  }
+  .two {
+    background: #bdc72f;
+    padding: .3rem;
+    margin: 0px 90px 0px 90px;
+  }
+  .three {
+    background: #4dc72f;
+    padding: .3rem;
+    margin: 0px 90px 0px 90px;
+  }
+  .four {
+    background: #c72f94;
+    padding: .8rem;
+    margin: 0px 90px 0px 90px;
+  }
+  .five {
+    padding: .2rem;
+    margin-top: -8px;
+    margin-left: 3px;
+  }
+
+  /* 3 Col Email, Website, County Info */
+  .therapist-details-two {
+    background: white;
+    padding: 2rem;
+    margin: -23px 90px 0px 90px;
+  }
+
+  /* Description */
+  .therapist-details-three {
+    background: white;
+    padding: 2rem;
+    margin: -23px 90px 0px 90px;
+  }
+  .therapist-details-three p {
+    font-size: 1.3rem;
+    
+
+
   
   /*============= FOOTER =============*/
   
-  
-  
-  /*============= SOCKET =============*/
-  
-  
-  
-  /*============= MEDIA QUERIES =============*/
+
   
   /* Devices under 1199px (xl) */
   @media (max-width: 1199.98px) {
