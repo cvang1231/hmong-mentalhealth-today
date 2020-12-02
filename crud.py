@@ -103,22 +103,25 @@ def get_favorites_by_id(fav_id):
 
 def get_fav_therapists_name_by_id(user_id):
     """Return a user's favorite therapists."""
-
-    therapist_ids = db.session.query(Favorite.thrpst_id).filter_by(user_id=user_id)
-
+    
     list_favs = []
-    for thrpst in therapist_ids:
-        list_favs.append(db.session.query(Therapist.name).filter_by(thrpst_id=thrpst.thrpst_id).all())
+    thrpsts = db.session.query(Favorite.thrpst_id).filter_by(user_id=user_id)
 
-    remove_content = ["[", "(", "]", ")", "',", "'"]
+    for therapist in thrpsts:
+        list_favs.append(db.session.query(Therapist.name).filter_by(thrpst_id=therapist.thrpst_id).all())
+
+    remove_syntax = ["[", "(", "'", "'", "," ")", "]"]
     fav_str = repr(list_favs)
 
-    for content in remove_content:
-        fav_str = fav_str.replace(content, '')
+    for syntax in remove_syntax:
+        fav_str = fav_str.replace(syntax, '')
     
-    joined_favs = fav_str.split(",")
+    list_favs = fav_str.split(",")
 
-    return joined_favs
+    if list_favs == ['']:
+        return f'List is empty.'
+    else:
+        return list_favs
 
 
 
