@@ -219,9 +219,28 @@ body {
   }
   .therapist-details-three p {
     font-size: 1.3rem;
+  }
     
-
-
+  /*=========== USERS FAV LIST =============*/
+  .profile-card {
+    width: 400px;
+    margin: auto;
+    background: #fff;
+  }
+   .main-container {
+     padding: 20px;
+  }
+   .account-title h2{
+    text-align: center;
+    padding-top: 20px;
+  }
+   .fav-list h5 {
+   text-align: center;
+  }
+   .empty-list p {
+   text-align: center;
+   color: red;
+  }
   
   /*============= FOOTER =============*/
   
