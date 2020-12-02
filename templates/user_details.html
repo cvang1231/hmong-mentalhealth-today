@@ -3,7 +3,45 @@
 
 {% block body %}
 
-<div class="container">
+<div class="profile-card">
+    <div class="account-title">
+        <h2><b>Your Account</b></h2>
+    </div>
+    <div class="main-container">
+        <p>Email: {{ user.email }}</p>
+        <p>
+            Zipcode: {{ user.zipcode }}
+        </p>
+    </div>
+</div>
+<div class="profile-card">
+    <div class="fav-list">
+        <h5>Your Favorite Therapist(s):</h5>
+    </div>
+    <div class="main-container">
+        {% if list_favs != "List is empty." %}
+            {% for fav in list_favs %}
+            <div class="fav-list">
+                <form action="/delete_favorite" id="list-favs" method="POST">
+                    <li>
+                        <input type="checkbox" name="therapist" id="therapist_name">
+                        <label>{{ fav }}</label>
+                    </li>
+                </form>
+                <button type="submit">Delete</button>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if list_favs == "List is empty." %}
+            <div class="empty-list">
+                <p><b>(List is empty.)</b></p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!--<div class="container">
     <div class="row">
         <div class="col">
 
@@ -24,15 +62,12 @@
                     </p>
             </form>
 
-            <p><a href='/therapists'>View Therapists</a></p>
-            <a href='/'>Homepage</a>
-
          
 
 
         </div>
     </div>
-</div>
+</div>-->
 
 {% endblock %}
 
