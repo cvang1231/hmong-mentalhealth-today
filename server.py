@@ -18,6 +18,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+
+
 @app.route('/')
 def get_homepage():
     """View homepage."""
@@ -134,20 +136,6 @@ def fav_therapist(thrpst_id):
             #return redirect(f'/therapists/{ thrpst_id }')
 
 
-@app.route('/delete_favorite', methods=['POST'])
-def delete_favorite():
-    """Delete favorite from database."""
-
-    # TODO: THIS NEEDS WORK. ASK FOR HELP.
-
-    user_id = session['user_id']
-    thrpst_id = request.form.get('therapist_name')
-    favorite = crud.get_fav(user_id, thrpst_id)
-
-    db.session.delete(favorite)
-    db.session.commit()
-
-
 ######################## USER REGISTRATION AND LOGIN ROUTES ########################
 @app.route('/create_account', methods = ['GET', 'POST'])
 def register_user():
@@ -166,7 +154,7 @@ def register_user():
         return redirect('/login')
 
     else:
-        flash('Cannot create an account with existing email! Please try again.')
+        flash('Cannot create an account with existing email. Please try again.')
 
         return redirect('/')
 
@@ -239,10 +227,10 @@ def logout():
     """Logs out user."""
 
     logout_user()
+    flash('Logged out sucessfully.')
     return redirect('/')
 
     #del session['user_id']
-    #flash('Logged out sucessfully.')
     #return redirect('/')
 
 
