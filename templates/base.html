@@ -54,8 +54,12 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/therapists" class="nav-link">View All Therapists</a></li>
+          {% if current_user.is_authenticated %}
             <li class="nav-item"><a href="/user/<user_id>" class="nav-link">My Account</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+            <li class="nav-item"><a href="/logout" class="nav-link" id="login-link">Log Out</a></li>
+          {% else %}
+            <li class="nav-item"><a href="/login" class="nav-link" id="login-link">Log In</a></li>
+          {% endif %}
           </ul>
         </div>
 
