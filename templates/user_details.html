@@ -23,10 +23,10 @@
             {% for fav in list_favs %}
             <div class="fav-list">
                 <form action="/delete_favorite" id="list-favs" method="POST">
-                    <li>
+                    <p>
                         <input type="checkbox" name="therapist" id="therapist_name">
                         <label>{{ fav }}</label>
-                    </li>
+                    </p>
                 </form>
                 <button type="submit">Delete</button>
             </div>
