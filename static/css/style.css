@@ -86,7 +86,7 @@ body {
   }
   .modal-content {
     width: 450px;
-    height: 235px;
+    height: 300px;
     background-color: white;
     border-radius: 4px; 
     text-align: center;
@@ -220,6 +220,9 @@ body {
   .therapist-details-three p {
     font-size: 1.3rem;
   }
+  .favorite-thrpst p {
+    color: red;
+  }
     
   /*=========== USERS FAV LIST =============*/
   .profile-card {
@@ -240,7 +243,7 @@ body {
    .empty-list p {
    text-align: center;
    color: red;
-  }
+   }
   
   /*============= FOOTER =============*/
   
