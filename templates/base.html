@@ -43,7 +43,7 @@
     <nav class="navbar bg-light navbar-light navbar-expand-lg">
       <div class="container">
 
-        <a href="/" class="navbar-brand"><img src="" alt="Logo" title="Logo"></a>
+        <a href="/" class="navbar-brand"><h2><b><i>HmongMentalHealthToday</i></b></h2></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarResponsive">
@@ -67,9 +67,14 @@
     </nav>
 
     {% for msg in get_flashed_messages() %}
-      <p class="flash-msg">
-        {{ msg }}
-      </p>
+    <div class="imp-msg">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span><b>{{ msg }}</b></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">+</span>
+        </button>
+      </div>
+    </div> 
     {% endfor %}
 
     {% block body %}{% endblock %}
