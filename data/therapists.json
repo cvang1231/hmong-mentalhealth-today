@@ -3,11 +3,11 @@
         "name": "Ae Vang",
         "clinic": "The Family Partnership",
         "website": "http://www.thefamilypartnership.org/programsservices/counseling/findatherapist/",
-        "email": "",
+        "email": "info@thefamilypartnership.org",
         "specialty": "Ae works with English and Hmong speaking children, adolescents and adults in individual and family therapy. Her experience includes working with stress, depression, anxiety, difficult life changes, relationship difficulties, trauma, and abuse. Ae utilizes an eclectic approach to therapy.",
         "lat": 44.9938234,
         "long": -93.3361445,
-        "img": "",
+        "img": "/static/images/aevang.jpg",
         "county": "Hennepin"
     },
     {
@@ -18,29 +18,29 @@
         "specialty": "Therapy for individuals, couples, families, teens, and children. Offer play therapy.",
         "lat": 44.8268950,
         "long": -93.2833886,
-        "img": "",
+        "img": "/static/images/alisonyang.jpg",
         "county": "Hennepin"
     },
     {
         "name": "Amanda Moua",
         "clinic": "The Family Partnership",
         "website": "http://www.thefamilypartnership.org/programsservices/counseling/findatherapist/",
-        "email": "",
+        "email": "info@thefamilypartnership.org",
         "specialty": "Amanda works with children and adults of all ages, primarily in individual and family therapy. She enjoys working with children who are experiencing social, emotional and behavioral problems in school, home and environment. She also has experience working with individuals who are dealing with depression, stress, anxiety, family conflict, life transitions, trauma and abuse or neglect. Amanda utilizes strengths based and relationship based therapies to assist and support clients in working through stressors and barriers. Amanda is able to provide therapy in both English and Hmong.",
         "lat": 44.9938234,
         "long": -93.3361445,
-        "img": "",
+        "img": "/static/images/amandamoua.jpg",
         "county": "Hennepin"
     },
     {
         "name": "Bea Vue-Benson",
         "clinic": "Bea Vue-Benson, LLC",
         "website": "https://www.psychologytoday.com/us/therapists/bea-natalie-vue-benson-saint-paul-mn/223484",
-        "email": "",
+        "email": "No email provided.",
         "specialty": "I believe in treating the person as a whole. Who you are as an emotional, mental, physical, and spiritual being is important to our work together. I take seriously your culture, gender, environment, sexual orientation, family systems, and personal experiences. Your health and wellness are intrinsically linked to these factors.",
         "lat": 44.9463603,
         "long": -93.1737669,
-        "img": "",
+        "img": "/static/images/beavue.jpg",
         "county": "Ramsey"
     },
     {
@@ -51,7 +51,7 @@
         "specialty": "Inpatient adult psychiatric care.",
         "lat": 44.9717774,
         "long": -93.2644276,
-        "img": "",
+        "img": "/static/images/chailo.jpg",
         "county": "Hennepin"
     },
     {
@@ -62,29 +62,29 @@
         "specialty": "Hmong, Southeast population, school-based",
         "lat": 44.9548604,
         "long": -93.1502777,
-        "img": "",
+        "img": "/static/images/chengvang.jpg",
         "county": "Ramsey"
     },
     {
         "name": "Elizabeth Lee",
         "clinic": "Midwest Center",
         "website": "https://www.mentalhealthinc.com/work/elizabeth-lee-ma/",
-        "email": "",
+        "email": "info@midwestcenter4u.com",
         "specialty": "My approach involves the creation of a warm and safe environment to foster genuine therapeutic relationships with clients. I believe each client has authentic qualities which can contribute to a deeper and meaningful life. I offer skills of encouragement and edification for insight, healing and restoration",
         "lat": 44.9655290,
         "long": -93.2062672,
-        "img": "",
+        "img": "/static/images/elizabethlee.jpg",
         "county": "Ramsey"
     },
     {
         "name": "Francois Vang",
         "clinic": "Nystrom & Associates",
         "website": "https://www.nystromcounseling.com/profile/francois-vang/",
-        "email": "",
+        "email": "No email provided.",
         "specialty": "My clinical interests center on the understanding of intimate partner violence, child welfare, trauma and depression, the barriers that impacts students in post secondary education, and racial disparities especially within the Hmong community.",
         "lat": 44.9231627,
         "long": -92.9750344,
-        "img": "",
+        "img": "/static/images/francoisvang.jpg",
         "county": "Dakota"
     },
     {
@@ -95,7 +95,7 @@
         "specialty": "Accelerated Resolution Therapy (ART), trauma-focused techniques, mindfulness practices, and Cognitive Behavioral Therapy (CBT) / co-occurring disorders, SPMI, cultural identity, anxiety, phobia, depression, PTSD",
         "lat": 44.9415658,
         "long": -93.1154589,
-        "img": "",
+        "img": "/static/images/gaocheevang.jpg",
         "county": "Ramsey"
     },
     {
@@ -106,7 +106,7 @@
         "specialty": "EMDR, TF-CBT, MAP, MI, IFS / Southeast Asian, children over 5, adults, couples, families",
         "lat": 44.9548604,
         "long": -93.1502777,
-        "img": "",
+        "img": "/static/images/huaxiongher.jpg",
         "county": "Ramsey"
     },
     {
@@ -117,7 +117,7 @@
         "specialty": "I treat individuals with a variety of mental health issues relating to anxiety, depression, and trauma. I also work with families doing intensive functional family therapy work. I use various intervention modalities in my practice including cognitive behavior therapy, motivational interviewing, EMDR, NET, FFT, meditation, relaxation exercises and mindfulness.",
         "lat": 44.9548604,
         "long": -93.1502777,
-        "img": "",
+        "img": "/static/images/kalo.jpg",
         "county": "Ramsey"
     },
     {
@@ -128,29 +128,29 @@
         "specialty": "EMDR, Pre-Marital Counseling, Refugees/Immigrants",
         "lat": 44.9677766,
         "long": -93.2172934,
-        "img": "",
+        "img": "/static/images/kazouavang.jpg",
         "county": "Ramsey"
     },
     {
         "name": "Kongmeng Kue",
         "clinic": "Nystrom & Associates",
         "website": "https://www.nystromcounseling.com/profile/kongmeng-kue/",
-        "email": "",
+        "email": "No email provided.",
         "specialty": "I have personal clinical interest in ASD or Autism spectrum disorder since I have it myself. The counseling approaches that I primarly use are Cognitive Behavioral Therapy and Solution Focused Therapy.",
         "lat": 44.9231627,
         "long": -92.9750344,
-        "img": "",
+        "img": "/static/images/kongmengkue.jpg",
         "county": "Washington"
     },
     {
         "name": "Larry Yang",
         "clinic": "Amherst H. Wilder Foundation",
         "website": "https://www.wilder.org/profiles/larry-yang",
-        "email": "",
+        "email": "No email provided.",
         "specialty": "Southeast Asian, children, adults, families",
         "lat": 44.9547471,
         "long": -93.1510593,
-        "img": "",
+        "img": "/static/images/larryyang.jpg",
         "county": "Ramsey"
     },
     {
@@ -161,7 +161,7 @@
         "specialty": "Individual, family therapy, play therapy, TF-CBT",
         "lat": 44.9282568,
         "long": -93.0697214,
-        "img": "",
+        "img": "/static/images/lisaxiong.jpg",
         "county": "Ramsey"
     },
     {
@@ -172,7 +172,7 @@
         "specialty": "Provides individual & relationship therapeutic services, poly/kink friendly, LGBTQIA+ welcoming",
         "lat": 44.9537377,
         "long": -93.1287398,
-        "img": "",
+        "img": "/static/images/maemoua.jpg",
         "county": "Ramsey"
     },
     {
@@ -183,29 +183,29 @@
         "specialty": "Individual, family and couples therapy. TF-CBT, EMDR.",
         "lat": 44.9123245,
         "long": -93.3301861,
-        "img": "",
+        "img": "/static/images/maibaoxiong.jpg",
         "county": "Hennepin"
     },
     {
         "name": "Maria Moua",
         "clinic": "Maplewood Wellness Center",
         "website": "https://themaplewoodwellnesscenter.com/maria-moua/",
-        "email": "",
+        "email": "maplewoodwellnesscentermn@gmail.com",
         "specialty": "I am fluent in Hmong and am able to diagnose and treat Hmong speaking patients. I also provide help to Hmong clients to navigate issues around Christian and Shaman beliefs/issues.",
         "lat": 45.0364713,
         "long": -93.0153825,
-        "img": "",
+        "img": "/static/images/mariamoua.jpg",
         "county": "Ramsey"
     },
     {
         "name": "May Moua",
         "clinic": "Morningsong Therapy",
         "website": "https://morningsongtherapy.com/therapist-minneapolis/",
-        "email": "",
+        "email": "No email provided.",
         "specialty": "",
         "lat": 44.9123245,
         "long": -93.3301861,
-        "img": "",
+        "img": "/static/images/maymoua.jpg",
         "county": "Hennepin"
     },
     {
@@ -216,7 +216,7 @@
         "specialty": "CBT, TF-CBT, Somatic Therapy, Relaxation training, ADHD, Autism, School-based.",
         "lat": 45.0101169,
         "long": 45.0364713,
-        "img": "",
+        "img": "/static/images/mayleechang.jpg",
         "county": "Ramsey"
     },
     {
@@ -227,7 +227,7 @@
         "specialty": "IFS, Solution Oriented, Narrative Therapy model",
         "lat": 44.9548604,
         "long": -93.1502777,
-        "img": "",
+        "img": "/static/images/nouvang.jpg",
         "county": "Ramsey"
     },
     {
@@ -238,18 +238,18 @@
         "specialty": "Experiential, IFS, Solution-Focused, Bowenian Family Therapy, Somatic, Trauma, Depression, Anxiety, Adjustment, Relationship Conflict (Partnered and Family), Domestic Violence",
         "lat": 44.8826797,
         "long": -93.2885073,
-        "img": "",
+        "img": "/static/images/pakouyang.jpg",
         "county": "Hennepin"
     },
     {
         "name": "Sandy Yang-James",
         "clinic": "The Luminous Mind",
-        "website": "https://www.theluminousmind.com",
+        "website": "https://theluminousmind.com/team.html",
         "email": "sandy@theluminousmind.com",
         "specialty": "Trauma, EMDR, Marriage & Family, Co-occuring Disorders",
         "lat": 45.0074230,
         "long": -93.1683220,
-        "img": "",
+        "img": "/static/images/sandyyangjames.jpg",
         "county": "Ramsey"
     },
     {
@@ -260,7 +260,7 @@
         "specialty": "CBT, ACT, trauma, feminist, multicultural",
         "lat": 44.9711612,
         "long": -93.2654152,
-        "img": "",
+        "img": "static/images/taleevang.jpg",
         "county": "Hennepin"
     },
     {
@@ -271,7 +271,7 @@
         "specialty": "Anxiety, depression and trauma; EMDR, TF-CBT, NET, MAP, MI",
         "lat": 44.9609213,
         "long": -93.0695059,
-        "img": "",
+        "img": "static/images/truethao.jpg",
         "county": "Ramsey"
     },
     {
@@ -282,7 +282,7 @@
         "specialty": "Individual and families impacted by domestic violence, trauma, LGBTQ+, Narrative Exposure Therapy Trained, Child-parent Psychotherapy Certified, trained in AIR Network",
         "lat": 44.9089785,
         "long": -93.1880093,
-        "img": "",
+        "img": "static/images/xayyang.jpg",
         "county": "Ramsey"
     }
 ]
