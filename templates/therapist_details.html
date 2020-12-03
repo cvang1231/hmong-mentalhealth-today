@@ -62,10 +62,15 @@
             <p>
                 {{ therapist.specialty }}
             </p>
-            {% if session['user_id'] %}
+            {% if current_user.is_authenticated %}
             <div class="favorite-thrpst">
                 <form action="/therapists/{{ therapist.thrpst_id }}/fav-therapist" method="POST">
                     <button id="add-fav" class="btn btn-outline-dark btn-md">Click to Favorite</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="favorite-thrpst">
+                <p><b>Log in to favorite a therapist.</b></p>
                 </form>
             </div>
             {% endif %}
@@ -96,7 +101,7 @@
 <p>
     {{ therapist.specialty }}
 </p>
-    {% if session['user_id'] %}
+    {% if session %}
          <div class="favorite-button">
         <form action="/therapists/{{ therapist.thrpst_id }}/fav-therapist" method="POST">
             <button id="add-fav" class="btn btn-outline-dark btn-md">Click to Favorite</button>
