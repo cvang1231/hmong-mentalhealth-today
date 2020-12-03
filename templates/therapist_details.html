@@ -30,7 +30,26 @@
 
 <!-- 3 Col Email, Website, County Info -->
 <div class="therapist-details-two">
-    <div class="container mx-auto m-3 text-center">
+    <div class="row text-center" id="featurerow">
+        <section class="col feature">
+            <h5 class="font-weight-bold"><i class="fas fa-envelope"></i></h5>
+            <h5 class="font-weight-bold">{{ therapist.email }}</h5>
+        </section>
+
+        <section class="col feature">
+           <h5 class="font-weight-bold"><i class="fas fa-window-maximize"></i></h5>
+            <h5 class="font-weight-bold"><a href="{{ therapist.website }}">{{ therapist.clinic }}</a></h5>
+        </section>
+
+        <section class="col feature">
+            <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt"></i></h5>
+            <h5 class="font-weight-bold">{{ therapist.county }} County</h5>
+        </section>
+    </div>
+</div>
+
+<!--<div class="therapist-details-two">
+    <div class="row text-center">
         <div id="details" class="row">
 
                 <div class="col-lg col-4">
