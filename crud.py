@@ -105,9 +105,13 @@ def get_fav_therapists_name_by_id(user_id):
     """Return a user's favorite therapists."""
     
     list_favs = []
+
+    # get all Favorite.thrpst_id from a user
     thrpsts = db.session.query(Favorite.thrpst_id).filter_by(user_id=user_id)
 
+    # loop through each Favorite.thrpst_id
     for therapist in thrpsts:
+        # Grab Therapist.name from each Favorite.thrpst_id and append to list_favs
         list_favs.append(db.session.query(Therapist.name).filter_by(thrpst_id=therapist.thrpst_id).all())
 
     remove_syntax = ["[", "(", "'", "'", "," ")", "]"]
