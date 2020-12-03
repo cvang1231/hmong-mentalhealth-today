@@ -1,6 +1,7 @@
 """Server for Hmong Mental Health Today Webapp"""
 
 from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
+from flask_login import (LoginManager, login_user, logout_user, login_required, current_user)
 from model import connect_to_db
 import crud, json
 import os
@@ -13,7 +14,8 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 app.jinja_env.undefined = StrictUndefined
 
-
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 @app.route('/')
@@ -80,27 +82,44 @@ def therapist_details(thrpst_id):
 
 ######################## FAVORITE LISTS ROUTES ########################
 @app.route('/therapists/<thrpst_id>/fav-therapist', methods = ['POST'])
+@login_required
 def fav_therapist(thrpst_id):
     """Add therapist to favorites."""
 
     # This works on the Click to favorite button on therapist_details page
 
-    user_id = session['user_id']
+    favorite = crud.get_fav(current_user.get_id(), thrpst_id)
 
-    # try seeing if user and therapist pairing are in database
-    try:
-        favorite = crud.get_fav(user_id, thrpst_id)
-        # if not in database
+    # if current user is logged in
+    if current_user.is_authenticated:
+
+        # if user and therapist pairing not in db, create fav
         if not favorite:
-            # create user and therapist pairing
-            crud.create_fav(user_id, thrpst_id)
-            flash('You just added this therapist as a favorite.')
+            crud.create_fav(current_user.get_id(), thrpst_id)
+            flash('Added to list of favorites.')
+
         else:
             flash('Therapist already favorited.')
+
+    else:
+        flash('Please login to favorite a therapist.')
+
+    #user_id = session['user_id']
+
+    # try seeing if user and therapist pairing are in database
+    #try:
+        #favorite = crud.get_fav(user_id, thrpst_id)
+        # if not in database
+        #if not favorite:
+            # create user and therapist pairing
+            #crud.create_fav(user_id, thrpst_id)
+            #flash('You just added this therapist as a favorite.')
+        #else:
+            #flash('Therapist already favorited.')
     # this code is executed if exception is raised in try block
     # if user_id not present, flash message will execute
-    except:
-        flash('Please log in to favorite a therapist.')
+    #except Unauthorized:
+        #flash('Please log in to favorite a therapist.')
 
     return redirect(f'/therapists/{ thrpst_id }')
 
@@ -119,18 +138,18 @@ def fav_therapist(thrpst_id):
 def delete_favorite():
     """Delete favorite from database."""
 
-    # Use fav_id to call favorite
-    fav_id = request.form.get('favorite')
-    favorite = crud.Favorite.query.get(fav_id)
+    # TODO: THIS NEEDS WORK. ASK FOR HELP.
 
-    db.session.delete(joined_fav)
+    user_id = session['user_id']
+    thrpst_id = request.form.get('therapist_name')
+    favorite = crud.get_fav(user_id, thrpst_id)
+
+    db.session.delete(favorite)
     db.session.commit()
-
-    return flash('Deleted.')
 
 
 ######################## USER REGISTRATION AND LOGIN ROUTES ########################
-@app.route('/create_user', methods = ['GET', 'POST'])
+@app.route('/create_account', methods = ['GET', 'POST'])
 def register_user():
     """Creates a new user with given inputs."""
 
@@ -156,15 +175,15 @@ def register_user():
 def user_details(user_id):
     """View details page for a particular user."""
 
-    user_id = session.get('user_id')
+    user = crud.get_user_by_id(current_user.get_id())
 
-    if user_id:
-        user = crud.get_user_by_id(user_id)
-        joined_fav = crud.get_fav_therapists_name_by_id(user_id)
-        print(joined_fav)
-        print(type(joined_fav))
+    if current_user.is_authenticated:
+        
+        list_favs = crud.get_fav_therapists_name_by_id(current_user.get_id())
+        print(list_favs)
+        print(type(list_favs))
         print("-----------------")
-        return render_template('user_details.html', user=user, joined_fav=joined_fav)
+        return render_template('user_details.html', user=user, list_favs=list_favs)
     else:
         flash('Please login to view your details.')
         return redirect('/login')
@@ -177,35 +196,54 @@ def log_in():
     return render_template('login.html')
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    """Used to reload user object form user ID stored in session."""
+
+    return crud.get_user_by_id(user_id)
+
+
 @app.route('/handle_login', methods = ['POST'])
 def handle_login():
     """Checks to see if email and password match with given inputs."""
     # This is the page where user logs in with their email and pw
 
     email = request.form.get('email')
-    password = request.form.get('password')
-
     user = crud.get_user_by_email(email)
 
-    if user and user.password == password:
-        session['user_id'] = user.user_id
-        flash(f'Successfully logged in {email}')
-
-        return redirect('/')
-
-    else: 
-        flash('Incorrect password and/or email. Please try again.')
-
+    if user:
+        login_user(user)
+        flash(f'Logged in successfully.')
+        return redirect('/user/<user_id>')
+    else:
+        flash(f'Incorrect email or password. Try again.')
         return redirect('/login')
+
+        # is_safe_url should check if the url is safe
+
+    #if user and user.password == password:
+        #session['user_id'] = user.user_id
+        #flash(f'Successfully logged in {email}')
+
+        #return redirect('/user/<user_id>')
+
+    #else: 
+        #flash('Incorrect password and/or email. Please try again.')
+
+        #return redirect('/login')
 
 
 @app.route('/logout')
-def log_user_out():
+@login_required
+def logout():
     """Logs out user."""
 
-    del session['user_id']
-    flash('Logged out sucessfully.')
+    logout_user()
     return redirect('/')
+
+    #del session['user_id']
+    #flash('Logged out sucessfully.')
+    #return redirect('/')
 
 
 
