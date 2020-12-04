@@ -25,11 +25,11 @@ class User(db.Model):
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False)
-    zipcode = db.Column(db.Integer)
+    # zipcode = db.Column(db.Integer)
 
     def __repr__(self):
 
-        return f'<User user_id={self.user_id} email={self.email} zipcode={self.zipcode}>'
+        return f'<User user_id={self.user_id} email={self.email}>'
 
     def is_authenticated(self):
         return True

@@ -9,14 +9,11 @@
     </div>
     <div class="main-container">
         <p>Email: {{ user.email }}</p>
-        <p>
-            Zipcode: {{ user.zipcode }}
-        </p>
     </div>
 </div>
 <div class="profile-card">
     <div class="fav-list">
-        <h5>Your Favorite Therapist(s):</h5>
+        <h5><b>Your Favorite Therapist(s):</b></h5>
     </div>
     <div class="main-container">
         {% if list_favs != "List is empty." %}

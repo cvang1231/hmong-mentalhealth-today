@@ -143,12 +143,11 @@ def register_user():
 
     email = request.form.get('email')
     password = request.form.get('password')
-    zipcode = request.form.get('zipcode')
 
     user = crud.get_user_by_email(email)
 
     if user == None:
-        new_user = crud.create_user(email, password, zipcode)
+        new_user = crud.create_user(email, password)
         flash('Account created! You can now login.')
 
         return redirect('/login')

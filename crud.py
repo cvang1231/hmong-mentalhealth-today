@@ -4,10 +4,10 @@ from model import db, User, Therapist, Favorite, connect_to_db
 
 
 ######################## Functions for user! ########################
-def create_user(email, password, zipcode):
+def create_user(email, password):
     """Create and return a new user."""
 
-    user = User(email=email, password=password, zipcode=zipcode)
+    user = User(email=email, password=password)
 
     db.session.add(user)
     db.session.commit()
